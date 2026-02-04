@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活力旺仔豬人工乳性能提升方案｜分子保護機制強化版</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #2a6ebb;
+            --secondary-blue: #4a8fd6;
+            --accent-yellow: #ffcc00;
+            --light-bg: #f0f7ff;
+            --dark-text: #1a2b4d;
+            --gray-text: #6c7a9c;
+            --success: #36b37e;
+            --warning: #ff9800;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 5px 15px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft JhengHei', '微軟正黑體', 'Noto Sans TC', sans-serif;
+        }
+        body {
+            background-color: #f5f9ff;
+            color: var(--dark-text);
+            line-height: 1.7;
+            scroll-behavior: smooth;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* 頁頭 */
+        header {
+            background: linear-gradient(rgba(42, 110, 187, 0.92), rgba(42, 110, 187, 0.95)), url('https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/89740c206aeb41ed952fe581f5ee0e7b.png~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=20260201234411C7633EE9B579303A0E72&rrcfp=8a172a1a&x-expires=1770565452&x-signature=simhHR9toxQTDrWO47l2%2FAHic40%3D');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 70px 0 50px;
+            text-align: center;
+            position: relative;
+        }
+        h1 {
+            font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            letter-spacing: 1px;
+        }
+        .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            opacity: 0.95;
+            max-width: 850px;
+            margin: 0 auto 25px;
+            line-height: 1.6;
+        }
+        .tagline {
+            background: linear-gradient(90deg, var(--accent-yellow), #e6b800);
+            color: var(--dark-text);
+            padding: 14px 40px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: bold;
+            margin: 20px auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
+            letter-spacing: 0.5px;
+        }
+        /* 主要區塊 */
+        section {
+            padding: 70px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            color: var(--primary-blue);
+            margin-bottom: 50px;
+            position: relative;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-yellow);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+        /* 卡片通用樣式 */
+        .card {
+            background: white;
+            border-radius: 14px;
+            padding: 35px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            margin-bottom: 35px;
+            border-top: 5px solid var(--secondary-blue);
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-top-color: var(--accent-yellow);
+        }
+        /* 圖片區塊樣式 */
+        .img-container {
+            width: 100%;
+            margin: 35px 0;
+            text-align: center;
+        }
+        .responsive-img {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+        .responsive-img:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+        .img-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin: 20px 0 10px;
+            color: var(--dark-text);
+        }
+        .img-desc {
+            font-size: 1.05rem;
+            color: var(--gray-text);
+            margin-bottom: 15px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* 網格佈局 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 35px;
+            margin-top: 40px;
+        }
+        /* 表格樣式 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        th {
+            background: linear-gradient(120deg, var(--primary-blue), #1a4a8a);
+            color: white;
+            padding: 18px 15px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        td {
+            padding: 16px 15px;
+            border-bottom: 1px solid #eaeaea;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:hover td {
+            background-color: #f0f7ff;
+        }
+        .highlight {
+            color: var(--accent-yellow);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .positive {
+            color: var(--success);
+            font-weight: bold;
+        }
+        .negative {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+        /* ROI高亮區塊 */
+        .roi-highlight {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #1a4a8a 100%);
+            color: white;
+            border-radius: 18px;
+            padding: 60px 40px;
+            text-align: center;
+            margin: 60px 0;
+            box-shadow: 0 15px 40px rgba(42, 110, 187, 0.35);
+            position: relative;
+            overflow: hidden;
+        }
+        .roi-highlight::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            z-index: 0;
+        }
+        .roi-value {
+            font-size: clamp(3.5rem, 7vw, 4.5rem);
+            font-weight: bold;
+            margin: 25px 0;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(90deg, #ffeb3b, #ffc107, #ffeb3b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        /* 參數卡片 */
+        .param-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 22px;
+            margin: 35px 0;
+        }
+        .param-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px 20px;
+            text-align: center;
+            min-width: 180px;
+            box-shadow: var(--shadow-sm);
+            border-top: 4px solid var(--accent-yellow);
+            transition: all 0.3s ease;
+        }
+        .param-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        .param-label {
+            font-size: 0.95rem;
+            color: var(--gray-text);
+            margin-bottom: 8px;
+        }
+        .param-value {
+            font-size: 2.1rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin: 5px 0;
+        }
+        /* 實施步驟 */
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 28px;
+            margin-top: 45px;
+        }
+        .step {
+            flex: 1;
+            min-width: 270px;
+            background: white;
+            border-radius: 14px;
+            padding: 35px 30px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border-top: 6px solid var(--accent-yellow);
+            transition: all 0.3s ease;
+        }
+        .step:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-yellow), #e6b800);
+            color: var(--dark-text);
+            border-radius: 50%;
+            line-height: 50px;
+            font-weight: bold;
+            margin-bottom: 22px;
+            font-size: 1.6rem;
+            box-shadow: 0 4px 10px rgba(255, 204, 0, 0.4);
+        }
+        /* 頁尾 */
+        footer {
+            background: linear-gradient(135deg, var(--dark-text), #0d1b2e);
+            color: rgba(255,255,255,0.85);
+            text-align: center;
+            padding: 60px 0 35px;
+            margin-top: 70px;
+        }
+        /* 數據來源框 */
+        .data-source {
+            background: linear-gradient(135deg, #e8f5e9, #d4edda);
+            border-left: 4px solid var(--success);
+            padding: 18px 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 25px 0;
+            font-size: 0.98rem;
+            box-shadow: 0 2px 8px rgba(54, 179, 126, 0.15);
+        }
+        .data-source strong {
+            color: var(--success);
+        }
+        /* 警示框 */
+        .warning-box {
+            background: linear-gradient(135deg, #fff8e1, #ffecb3);
+            border-left: 4px solid var(--warning);
+            padding: 18px 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 25px 0;
+            font-size: 0.98rem;
+            box-shadow: 0 2px 8px rgba(255, 152, 0, 0.15);
+        }
+        .warning-box strong {
+            color: var(--warning);
+        }
+        /* 機制卡片 */
+        .mechanism-card {
+            background: linear-gradient(135deg, #f8fbff 0%, #eef5ff 100%);
+            border-left: 4px solid var(--primary-blue);
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 20px 0;
+        }
+        .mechanism-title {
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        .gene-highlight {
+            background: linear-gradient(120deg, rgba(255,204,0,0.2), rgba(255,204,0,0.3));
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+        }
+        .molecule-highlight {
+            background: linear-gradient(120deg, rgba(42,110,187,0.15), rgba(42,110,187,0.25));
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+        }
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            section {
+                padding: 50px 0;
+            }
+            .card, .step {
+                padding: 28px 25px;
+            }
+            .roi-highlight {
+                padding: 40px 25px;
+                margin: 40px 0;
+            }
+            .roi-value {
+                font-size: clamp(2.8rem, 8vw, 3.5rem);
+            }
+            .param-cards {
+                gap: 15px;
+            }
+            .param-card {
+                min-width: 150px;
+                padding: 20px 15px;
+            }
+            .param-value {
+                font-size: 1.8rem;
+            }
+            th, td {
+                padding: 12px 8px;
+                font-size: 0.85rem;
+            }
+            table {
+                font-size: 0.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            header {
+                padding: 50px 0 35px;
+            }
+            h1 {
+                font-size: 1.9rem;
+            }
+            .subtitle {
+                font-size: 1.05rem;
+                padding: 0 15px;
+            }
+            .tagline {
+                padding: 10px 25px;
+                font-size: 0.95rem;
+                margin: 15px auto;
+            }
+            .card {
+                padding: 22px 20px;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .step {
+                min-width: 100%;
+            }
+            .roi-highlight {
+                padding: 35px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 頁頭 -->
+    <header>
+        <div class="container">
+            <h1>活力旺仔豬人工乳性能提升方案</h1>
+            <p class="subtitle">專注保育期營養調控｜分子級肝臟保護與細胞能量提升｜降低腹瀉率與提高育成率</p>
+            <div class="tagline">每噸人工乳添加1KG · 每頭仔豬投資NTD 9.41 · 投資報酬率 2,104%</div>
+        </div>
+    </header>
+
+    <!-- 執行摘要 -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">方案核心：分子級保護機制打造最佳保育基礎</h2>
+            <div class="card">
+                <p>本方案針對保育期仔豬（21-49日齡）的特殊營養需求，透過精準的人工乳營養強化技術，在每噸人工乳中添加1公斤的活力旺仔豬專用配方。方案整合<strong>肝臟保護</strong>、<strong>強效抗氧化</strong>、<strong>腸道健康維持</strong>與<strong>細胞能量提升</strong>等多重分子機制，目標是最大化仔豬生長潛能，提升日增重與飼料轉化率，降低腹瀉率與死亡率，為後續生長育肥期打下堅實基礎。</p>
+                
+                <div class="data-source">
+                    <strong>科學機制核心：</strong> 活力旺獨特分子結構能高效中和活性氧（ROS），並通過下調 <span class="gene-highlight">NR1H3</span>、<span class="gene-highlight">CREB</span> 等與炎症、纖維化相關基因的表達，同時提升 <span class="molecule-highlight">NAD+</span> 水平支持細胞修復，為仔豬提供全方位分子級保護。
+                </div>
+                
+                <div class="img-container">
+                    <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/89740c206aeb41ed952fe581f5ee0e7b.png~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=20260201234411C7633EE9B579303A0E72&rrcfp=8a172a1a&x-expires=1770565452&x-signature=simhHR9toxQTDrWO47l2%2FAHic40%3D" alt="健康保育仔豬群採食人工乳場景" class="responsive-img">
+                    <div class="img-title">健康保育仔豬群採食人工乳場景</div>
+                    <div class="img-desc">現代化保育舍中整齊健康的保育仔豬群，具備優良的生長基礎條件</div>
+                </div>
+                
+                <div class="param-cards">
+                    <div class="param-card">
+                        <div class="param-label">仔豬日採食量</div>
+                        <div class="param-value">350 克/天</div>
+                    </div>
+                    <div class="param-card">
+                        <div class="param-label">保育期天數</div>
+                        <div class="param-value">28 天</div>
+                    </div>
+                    <div class="param-card">
+                        <div class="param-label">人工乳添加比例</div>
+                        <div class="param-value">1 KG/噸</div>
+                    </div>
+                    <div class="param-card">
+                        <div class="param-label">添加劑成本</div>
+                        <div class="param-value">NTD 960/KG</div>
+                    </div>
+                </div>
+                
+                <div class="grid">
+                    <div class="card" style="border-top-color: #ffcc00;">
+                        <h3><i class="fas fa-chart-line"></i> 日增重提升</h3>
+                        <p class="highlight" style="font-size: 2.3rem; margin: 15px 0;">+50~70 克/天</p>
+                        <p>日增重從300克提升至350-370克，28天總增重增加1.4-2.0公斤。</p>
+                    </div>
+                    <div class="card" style="border-top-color: #4a8fd6;">
+                        <h3><i class="fas fa-heartbeat"></i> 腹瀉率降低</h3>
+                        <p class="highlight" style="font-size: 2.3rem; margin: 15px 0;">↓60~70%</p>
+                        <p>腹瀉率從15%降至5-6%，減少抗生素使用與醫療成本。</p>
+                    </div>
+                    <div class="card" style="border-top-color: #36b37e;">
+                        <h3><i class="fas fa-percentage"></i> 飼料效率提升</h3>
+                        <p class="highlight" style="font-size: 2.3rem; margin: 15px 0;">FCR 1.5→1.4</p>
+                        <p>飼料轉化率改善，每增重1公斤節省0.1公斤飼料。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技術機制 -->
+    <section style="background-color: #f0f7ff;">
+        <div class="container">
+            <h2 class="section-title">人工乳營養強化核心機制</h2>
+            
+            <div class="card">
+                <h3>1. 腸道健康與菌相平衡強化</h3>
+                <p>添加專利益生菌與益生元，建立優勢腸道菌群，強化腸道屏障功能，降低病原菌附著，減少營養性腹瀉發生率。</p>
+                
+                <div class="img-container">
+                    <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/87b36858c7834b5d95da922d5c5d2ab9.png~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=20260201234411C7633EE9B579303A0E72&rrcfp=8a172a1a&x-expires=1770565452&x-signature=15QYAN1hMQFbVgLPjqQvr0h3wCI%3D" alt="仔豬腸道菌相平衡與健康腸絨毛示意圖" class="responsive-img">
+                    <div class="img-title">仔豬腸道菌相平衡與健康腸絨毛示意圖</div>
+                    <div class="img-desc">健康腸道菌群與完整腸絨毛結構，是營養吸收與免疫防禦的關鍵</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>2. 營養吸收效率優化</h3>
+                <p>添加消化酶複合物（蛋白酶、澱粉酶、脂肪酶），提升蛋白質、碳水化合物與脂肪消化率；小肽技術促進氨基酸直接吸收，減少能量消耗。</p>
+                
+                <div class="img-container">
+                    <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/e2cde61127334a55a796adee3421ff4b.png~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=20260201234411C7633EE9B579303A0E72&rrcfp=8a172a1a&x-expires=1770565452&x-signature=NtytD4mWkCDluZUSFprV9ViO%2Bz8%3D" alt="仔豬採食人工乳營養吸收場景" class="responsive-img">
+                    <div class="img-title">仔豬採食人工乳營養吸收場景</div>
+                    <div class="img-desc">優化的人工乳配方搭配自動餵食系統，確保仔豬獲得充足且易吸收的營養</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>3. 免疫系統發育支持</h3>
+                <p>添加免疫球蛋白、乳鐵蛋白與特定核苷酸，支持仔豬被動免疫轉換期，降低斷奶應激，提升疫苗反應效果。</p>
+                
+                <div class="img-container">
+                    <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/15293b963e784f65ab80cc162d0258fd.png~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=20260201234411C7633EE9B579303A0E72&rrcfp=8a172a1a&x-expires=1770565452&x-signature=VRjG0sKeQsM4qzAoLRvpsqyMWAg%3D" alt="仔豬免疫系統發育與保護機制示意圖" class="responsive-img">
+                    <div class="img-title">仔豬免疫系統發育與保護機制示意圖</div>
+                    <div class="img-desc">免疫細胞（T細胞/B細胞）與免疫球蛋白（IgG）共同構建仔豬防禦體系</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>4. 分子保護與細胞能量機制（核心創新）</h3>
+                
+                <div class="mechanism-card">
+                    <div class="mechanism-title"><i class="fas fa-liver"></i> 肝臟保護機制</div>
+                    <p>減輕氧化損傷，減少膠原沉積，預防早期纖維化。通過下調 <span class="gene-highlight">NR1H3</span>（肝X受體）與纖維化相關基因表達，保護肝細胞功能。</p>
+                </div>
+                
+                <div class="mechanism-card">
+                    <div class="mechanism-title"><i class="fas fa-wind"></i> 強效抗氧化作用</div>
+                    <p>高效清除自由基，保護腸上皮和肝細胞膜。活力旺獨特分子結構能直接中和活性氧（ROS），減少氧化應激對細胞的損害。</p>
+                </div>
+                
+                <div class="mechanism-card">
+                    <div class="mechanism-title"><i class="fas fa-stomach"></i> 腸道屏障保護</div>
+                    <p>潛在抗炎作用，有助維持斷奶期間腸道屏障完整性。通過調控 <span class="gene-highlight">CREB</span>（cAMP反應元件結合蛋白）信號通路，減輕腸道炎症反應。</p>
+                </div>
+                
+                <div class="mechanism-card">
+                    <div class="mechanism-title"><i class="fas fa-bolt"></i> 細胞能量與代謝支持</div>
+                    <ul style="padding-left: 25px; margin-top: 10px; line-height: 1.8;">
+                        <li><strong>提升細胞能量：</strong>為仔豬高速生長的腸道、肌肉等組織供能，支持ATP合成</li>
+                        <li><strong>支持代謝與發育：</strong>改善整體代謝健康，支持器官發育與功能成熟</li>
+                        <li><strong>潛在抗應激：</strong>提升 <span class="molecule-highlight">NAD+</span> 水平，支持細胞修復，緩解斷奶應激損傷</li>
+                    </ul>
+                </div>
+                
+                <div class="warning-box" style="margin-top: 25px;">
+                    <strong>分子機轉總結：</strong> 活力旺通過「抗氧化-抗炎-能量代謝」三重協同機制，在分子層面保護仔豬肝臟與腸道健康，同時提升細胞能量水平，為斷奶期仔豬提供全方位保護，奠定高效生長基礎。
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 經濟效益 -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">經濟效益評估分析（修正版）</h2>
+            
+            <div class="card">
+                <h3>成本計算基礎</h3>
+                <table>
+                    <tr>
+                        <th>參數</th>
+                        <th>數值</th>
+                        <th>計算說明</th>
+                    </tr>
+                    <tr>
+                        <td>保育期天數</td>
+                        <td>28 天</td>
+                        <td>標準保育期長度</td>
+                    </tr>
+                    <tr>
+                        <td>日採食量</td>
+                        <td>350 克/天</td>
+                        <td>保育仔豬平均採食量</td>
+                    </tr>
+                    <tr>
+                        <td>保育期飼料總量</td>
+                        <td>9.8 公斤</td>
+                        <td>28天 × 0.35公斤/天</td>
+                    </tr>
+                    <tr>
+                        <td>添加比例</td>
+                        <td>1 公斤/噸</td>
+                        <td>每噸人工乳添加量</td>
+                    </tr>
+                    <tr>
+                        <td>單頭添加劑用量</td>
+                        <td>9.8 克</td>
+                        <td>9.8公斤 ÷ 1000 × 1公斤</td>
+                    </tr>
+                    <tr>
+                        <td>添加劑單價</td>
+                        <td>NTD 960/公斤</td>
+                        <td>活力旺仔豬專用配方</td>
+                    </tr>
+                    <tr style="background-color: #f0f7ff; font-weight: bold;">
+                        <td>單頭仔豬添加劑成本</td>
+                        <td class="highlight">NTD 9.41</td>
+                        <td>0.0098公斤 × NTD 960/公斤</td>
+                    </tr>
+                    <tr>
+                        <td>批次規模</td>
+                        <td>500 頭/批次</td>
+                        <td>典型保育舍容量</td>
+                    </tr>
+                    <tr style="background-color: #e6f0ff; font-weight: bold;">
+                        <td>500頭批次總成本</td>
+                        <td class="highlight">NTD 4,705</td>
+                        <td>NTD 9.41 × 500頭</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="card">
+                <h3>效益分析：單頭仔豬經濟價值（修正版）</h3>
+                <table>
+                    <tr>
+                        <th>效益來源</th>
+                        <th>計算方式</th>
+                        <th>經濟價值 (NTD/頭)</th>
+                    </tr>
+                    <tr>
+                        <td>增重增加<br>(+1.6公斤/頭)</td>
+                        <td>1.6公斤 × NTD 60/公斤仔豬增重價值</td>
+                        <td class="positive">+96.00</td>
+                    </tr>
+                    <tr>
+                        <td>飼料效率提升<br>(FCR 1.5→1.4)</td>
+                        <td>節省飼料1.0公斤 × NTD 25/公斤人工乳價格</td>
+                        <td class="positive">+25.00</td>
+                    </tr>
+                    <tr>
+                        <td>腹瀉率降低<br>(15%→6%)</td>
+                        <td>減少治療成本NTD 15/頭 × 9% + 降低死亡率3% × NTD 2,500/頭價值</td>
+                        <td class="positive">+76.35</td>
+                    </tr>
+                    <tr>
+                        <td>整齊度提升</td>
+                        <td>減少弱仔比例，提升批次均勻度與管理效率</td>
+                        <td class="positive">+10.00</td>
+                    </tr>
+                    <tr style="background-color: #f0f7ff; font-weight: bold;">
+                        <td>總效益</td>
+                        <td></td>
+                        <td class="positive">+207.35</td>
+                    </tr>
+                    <tr>
+                        <td>添加劑成本</td>
+                        <td></td>
+                        <td class="negative">-9.41</td>
+                    </tr>
+                    <tr style="background-color: #d4e5ff; font-weight: bold; font-size: 1.15rem;">
+                        <td>淨利潤增加</td>
+                        <td></td>
+                        <td class="highlight">+197.94</td>
+                    </tr>
+                </table>
+                
+                <div style="margin-top: 28px; background: linear-gradient(135deg, #fff8e0, #ffecb3); padding: 22px; border-radius: 12px; border-left: 5px solid var(--accent-yellow);">
+                    <p><strong>計算說明：</strong></p>
+                    <ul style="padding-left: 25px; margin-top: 12px; line-height: 1.7;">
+                        <li>仔豬增重價值：保育期每公斤增重價值約NTD 60元（基於後續生長潛能與市場價值）</li>
+                        <li>人工乳價格：以NTD 25元/公斤計算</li>
+                        <li>腹瀉治療成本：包括藥物、人工與生長損失，每頭腹瀉仔豬約NTD 15元</li>
+                        <li><strong>仔豬價值：保育結束時仔豬市場價值約NTD 2,500元/頭（修正後）</strong></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="roi-highlight">
+                <h3 style="font-size: 1.8rem; margin-bottom: 15px; position: relative; z-index: 1;">投資報酬率分析（修正版）</h3>
+                <div class="roi-value">2,104%</div>
+                <p style="font-size: 1.3rem; margin: 20px 0; position: relative; z-index: 1;">每投入1元，創造21.04元淨收益</p>
+                <p style="font-size: 1.15rem; margin-bottom: 15px; position: relative; z-index: 1;">投資回收期：約1.8天</p>
+                <p style="font-size: 1.4rem; font-weight: bold; margin-top: 10px; position: relative; z-index: 1;">單頭仔豬淨利潤增加：<strong>NTD 197.94</strong></p>
+            </div>
+            
+            <div class="img-container">
+                <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/45ec9c8c47c84941ba47718c2d2003a9.png~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=20260201234411C7633EE9B579303A0E72&rrcfp=8a172a1a&x-expires=1770565452&x-signature=JFvf0n%2BWtzpeG7YrEJFNe7eLw%2Fw%3D" alt="仔豬人工乳投資報酬率與效益增長圖表" class="responsive-img">
+                <div class="img-title">仔豬人工乳投資報酬率與效益增長分析</div>
+                <div class="img-desc">1678% ROI、1.9天投資回收期，單頭仔豬淨利潤增加NTD 147.98</div>
+            </div>
+            
+            <div class="card">
+                <h3>批次規模經濟效益（500頭/批次，修正版）</h3>
+                <table>
+                    <tr>
+                        <th>效益項目</th>
+                        <th>計算基數</th>
+                        <th>批次總效益 (NTD)</th>
+                    </tr>
+                    <tr>
+                        <td>增重增加總價值</td>
+                        <td>500頭 × 1.6公斤/頭 × NTD 60/公斤</td>
+                        <td>+48,000</td>
+                    </tr>
+                    <tr>
+                        <td>飼料節省總價值</td>
+                        <td>500頭 × 1.0公斤/頭 × NTD 25/公斤</td>
+                        <td>+12,500</td>
+                    </tr>
+                    <tr>
+                        <td>健康改善總價值</td>
+                        <td>500頭 × NTD 76.35/頭</td>
+                        <td>+38,175</td>
+                    </tr>
+                    <tr style="background-color: #f0f7ff; font-weight: bold;">
+                        <td>批次效益總和</td>
+                        <td></td>
+                        <td>+98,675</td>
+                    </tr>
+                    <tr>
+                        <td>批次添加劑總成本</td>
+                        <td>500頭 × NTD 9.41/頭</td>
+                        <td>-4,705</td>
+                    </tr>
+                    <tr style="background-color: #d4e5ff; font-weight: bold; font-size: 1.15rem;">
+                        <td>批次綜合淨利潤增加</td>
+                        <td></td>
+                        <td class="highlight">+93,970</td>
+                    </tr>
+                </table>
+                <p style="margin-top: 25px; text-align: center; font-weight: bold; font-size: 1.3rem;">
+                    500頭仔豬批次可增加約 <b style="color: var(--accent-yellow);">9.4萬元</b> 淨利潤
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 實施建議 -->
+    <section style="background-color: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">三階段實施建議</h2>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 style="margin-bottom: 15px;">小規模驗證</h3>
+                    <p><strong>規模：</strong>50頭仔豬（同批次）</p>
+                    <p><strong>週期：</strong>28天保育期</p>
+                    <p><strong>成本：</strong>約NTD 471</p>
+                    <p><strong>監測重點：</strong>日增重、腹瀉率、採食量</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 style="margin-bottom: 15px;">效益確認</h3>
+                    <p><strong>規模：</strong>200頭仔豬（2-3欄）</p>
+                    <p><strong>週期：</strong>2個保育批次（約8週）</p>
+                    <p><strong>成本：</strong>約NTD 1,882</p>
+                    <p><strong>監測重點：</strong>飼料轉化率、整齊度、死亡率</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 style="margin-bottom: 15px;">全面導入</h3>
+                    <p><strong>規模：</strong>全場保育仔豬</p>
+                    <p><strong>時機：</strong>從人工乳開始使用至保育結束</p>
+                    <p><strong>持續成本：</strong>頭數 × NTD 9.41/頭</p>
+                    <p><strong>目標：</strong>建立高健康、高生長性能保育豬群</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h4 style="display: flex; align-items: center; gap: 10px;"><i class="fas fa-clipboard-check" style="color: var(--primary-blue);"></i> 關鍵實施要點：</h4>
+                <ul style="padding-left: 28px; margin-top: 22px; line-height: 1.9;">
+                    <li><strong>添加時機：</strong>從仔豬開始採食人工乳立即添加，持續至保育期結束</li>
+                    <li><strong>對照設置：</strong>試驗階段務必設立對照組，相同條件管理</li>
+                    <li><strong>數據記錄：</strong>每日記錄採食量、每週秤重、記錄腹瀉頭數與治療情況</li>
+                    <li><strong>環境控制：</strong>確保保育舍溫度、濕度與通風適宜，減少環境應激</li>
+                    <li><strong>成本核算：</strong>精確計算添加劑成本與產出效益比例</li>
+                </ul>
+                
+                <div class="warning-box" style="margin-top: 30px; border-left-width: 5px;">
+                    <h4 style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;"><i class="fas fa-exclamation-triangle" style="color: var(--warning); font-size: 1.3rem;"></i> 分子機制應用要點：</h4>
+                    <ul style="padding-left: 25px; margin-top: 12px; line-height: 1.8;">
+                        <li>活力旺分子保護機制需要持續作用，建議從斷奶前3天開始添加至保育結束</li>
+                        <li>配合優質人工乳使用，避免高豆粕配方加重腸道負擔</li>
+                        <li>保育舍溫度維持在28-30℃（第一週），每週降低2℃，減少斷奶應激</li>
+                        <li>確保充足清潔飲水，支持肝臟代謝與排毒功能</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 結論 -->
+    <section style="background: linear-gradient(135deg, #f0f7ff 0%, #e6f0ff 100%);">
+        <div class="container">
+            <h2 class="section-title">結論：分子級營養保護，奠定高效生長基礎</h2>
+            
+            <div class="card">
+                <div class="grid">
+                    <div>
+                        <h3 style="color: var(--gray-text); display: flex; align-items: center; gap: 10px;"><i class="fas fa-exclamation-circle"></i> 傳統保育管理</h3>
+                        <ul style="padding-left: 25px; margin-top: 22px; line-height: 1.9;">
+                            <li>人工乳僅提供基礎營養，缺乏功能性成分</li>
+                            <li>高腹瀉率導致抗生素過度使用與生長受阻</li>
+                            <li>肝臟與腸道氧化損傷累積，影響長期健康</li>
+                            <li>斷奶應激導致生長停滯，恢復期長</li>
+                            <li>保育期增重慢，延長整體出欄時間</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 style="color: var(--primary-blue); display: flex; align-items: center; gap: 10px;"><i class="fas fa-check-circle"></i> 活力旺人工乳方案</h3>
+                        <ul style="padding-left: 25px; margin-top: 22px; line-height: 1.9; color: var(--primary-blue); font-weight: 500;">
+                            <li>分子級肝臟保護，預防早期纖維化</li>
+                            <li>強效抗氧化，保護腸上皮與肝細胞膜</li>
+                            <li>調控NR1H3、CREB基因表達，減輕炎症</li>
+                            <li>提升NAD+水平，支持細胞修復與能量代謝</li>
+                            <li>降低腹瀉率，提升日增重與整齊度</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="img-container">
+                    <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/9ed4f99e011442618051fe3d037a053e.png~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=20260201234411C7633EE9B579303A0E72&rrcfp=8a172a1a&x-expires=1770565452&x-signature=C5uOV5Rs27RYC7ZXDsdzgXlnHbs%3D" alt="高健康高整齊度保育仔豬群成果展示" class="responsive-img">
+                    <div class="img-title">高健康高整齊度保育仔豬群成果展示</div>
+                    <div class="img-desc">使用活力旺人工乳方案後，保育仔豬活力充沛、整齊度高，為後續生長奠定堅實基礎</div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px; padding: 35px; background: linear-gradient(135deg, #e6f0ff 0%, #d4e5ff 100%); border-radius: 14px; border: 2px solid var(--secondary-blue);">
+                    <h3 style="font-size: 1.6rem; margin-bottom: 20px;">核心價值主張</h3>
+                    <p style="font-size: 1.45rem; margin-top: 20px; line-height: 1.7; font-weight: 500;">
+                        以每頭仔豬投入 <b style="color: var(--accent-yellow); font-size: 1.6rem;">9.41元</b> 的精準營養成本，<br>
+                        換取 <b style="color: var(--success); font-size: 1.6rem;">197.94元</b> 淨利潤增長，投資報酬率達 <b style="background: linear-gradient(90deg, #ffeb3b, #ffc107); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.7rem;">2,104%</b>，<br>
+                        將保育期營養從「必要支出」轉化為「高報酬投資」。
+                    </p>
+                </div>
+                
+                <div class="data-source" style="margin-top: 35px;">
+                    <strong>科學依據：</strong><br>
+                    本方案分子保護機制基於最新研究，活力旺通過調控 <span class="gene-highlight">NR1H3</span>、<span class="gene-highlight">CREB</span> 等關鍵基因表達，同時提升 <span class="molecule-highlight">NAD+</span> 水平，在分子層面保護仔豬肝臟與腸道健康，為高效生長奠定基礎。
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer>
+        <div class="container">
+            <div style="margin-bottom: 35px;">
+                <h3 style="font-size: 1.8rem; margin-bottom: 15px;">首池有限公司｜SHOU CHI Co., Ltd.</h3>
+                <p style="font-size: 1.2rem; opacity: 0.9;">Precision Nutrition · Molecular Protection · Sustainable Agriculture</p>
+            </div>
+            <div style="padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.95rem; opacity: 0.85; line-height: 1.7;">
+                <p>© 2026 首池有限公司 版權所有｜活力旺仔豬人工乳專用配方方案</p>
+                <p>分子保護機制基於最新科學研究｜實際效益可能因管理條件而異</p>
+                <p style="margin-top: 10px; font-weight: 500;">技術諮詢專線：0800-xxx-xxx｜service@shouchi.com.tw</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 卡片交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // 點擊步驟卡效果
+            const steps = document.querySelectorAll('.step');
+            steps.forEach(step => {
+                step.addEventListener('click', function() {
+                    this.style.backgroundColor = '#e6f0ff';
+                    setTimeout(() => {
+                        this.style.backgroundColor = '';
+                    }, 300);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

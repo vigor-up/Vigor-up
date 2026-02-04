@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>活力旺哺乳母豬泌乳性能提升方案｜首池有限公司</title>
+  <style>
+    :root {
+      --primary: #2c6e36;
+      --secondary: #4a9b52;
+      --accent: #f8a51c;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --gray: #6c757d;
+      --success: #28a745;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+      --shadow-md: 0 5px 15px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 25px rgba(0,0,0,0.1);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Microsoft JhengHei', '微軟正黑體', 'Noto Sans TC', sans-serif;
+    }
+    body {
+      background-color: #f5f7f9;
+      color: var(--dark);
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    /* 響應式圖片樣式 */
+    .responsive-img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: var(--shadow-md);
+      margin: clamp(15px, 3vw, 25px) 0;
+    }
+    .img-caption {
+      text-align: center;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      color: var(--gray);
+      margin-bottom: clamp(20px, 4vw, 30px);
+      font-style: italic;
+    }
+    /* 頁頭樣式強化 */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      padding: 60px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0) 70%);
+      z-index: 0;
+      animation: bgFloat 15s ease-in-out infinite;
+    }
+    @keyframes bgFloat {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(-5%, -5%) rotate(2deg); }
+    }
+    header .container {
+      position: relative;
+      z-index: 1;
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      margin-bottom: 15px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      line-height: 1.3;
+    }
+    .subtitle {
+      font-size: clamp(1rem, 3vw, 1.4rem);
+      opacity: 0.9;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .tagline {
+      background-color: var(--accent);
+      color: white;
+      padding: 10px 25px;
+      border-radius: 30px;
+      display: inline-block;
+      font-weight: bold;
+      margin: 25px auto;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    /* 區塊通用樣式 */
+    section {
+      padding: clamp(40px, 8vw, 60px) 0;
+    }
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.8rem, 4vw, 2.2rem);
+      color: var(--primary);
+      margin-bottom: clamp(30px, 5vw, 40px);
+      position: relative;
+      font-weight: 700;
+    }
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      margin: 15px auto;
+      border-radius: 2px;
+    }
+    /* 執行摘要優化 */
+    .executive-summary {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: var(--shadow-lg);
+      padding: clamp(25px, 5vw, 40px);
+      margin-bottom: 40px;
+      border-top: 5px solid var(--secondary);
+    }
+    .executive-summary p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: clamp(20px, 3vw, 30px);
+      margin-top: 30px;
+    }
+    .summary-card {
+      background: linear-gradient(145deg, #ffffff, #f0f5f2);
+      border-radius: 12px;
+      padding: clamp(20px, 4vw, 25px);
+      text-align: center;
+      border-left: 4px solid var(--secondary);
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+    }
+    .summary-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-left-color: var(--accent);
+    }
+    .card-title {
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    .card-value {
+      font-size: clamp(1.8rem, 4vw, 2.2rem);
+      font-weight: bold;
+      color: var(--accent);
+      margin: 10px 0;
+      line-height: 1.2;
+    }
+    .card-desc {
+      color: var(--gray);
+      font-size: clamp(0.95rem, 2vw, 1.05rem);
+      line-height: 1.6;
+    }
+    /* 技術機制區塊 */
+    .tech-mechanism {
+      background-color: #e8f4ec;
+      border-radius: 15px;
+      overflow: hidden;
+      margin: 20px 0;
+      padding: clamp(20px, 4vw, 30px);
+    }
+    .mechanism-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: clamp(20px, 3vw, 30px);
+      margin-top: 40px;
+    }
+    .mechanism-card {
+      background: white;
+      border-radius: 12px;
+      padding: clamp(20px, 4vw, 30px);
+      box-shadow: var(--shadow-md);
+      transition: transform 0.3s ease;
+    }
+    .mechanism-card:hover {
+      transform: translateY(-3px);
+    }
+    .mechanism-title {
+      font-size: clamp(1.3rem, 3vw, 1.6rem);
+      color: var(--primary);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+    }
+    .mechanism-title::before {
+      content: "•";
+      color: var(--accent);
+      font-size: 2.5rem;
+      margin-right: 15px;
+      line-height: 1;
+    }
+    .mechanism-card p {
+      margin-bottom: 15px;
+      line-height: 1.7;
+    }
+    /* 表格優化 */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    th {
+      background-color: var(--primary);
+      color: white;
+      padding: clamp(10px, 2vw, 15px);
+      text-align: left;
+      font-weight: 600;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+    }
+    td {
+      padding: clamp(10px, 2vw, 14px);
+      border-bottom: 1px solid #e9ecef;
+      font-size: clamp(0.85rem, 2vw, 0.95rem);
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    tr:hover td {
+      background-color: #f8fcfa;
+    }
+    .highlight {
+      color: var(--accent);
+      font-weight: bold;
+    }
+    /* ROI卡片優化 */
+    .roi-card {
+      background: linear-gradient(135deg, var(--primary) 0%, #1a4a24 100%);
+      color: white;
+      border-radius: 15px;
+      padding: clamp(30px, 6vw, 40px);
+      text-align: center;
+      margin: clamp(30px, 5vw, 50px) 0;
+      box-shadow: 0 10px 30px rgba(44, 110, 54, 0.3);
+      transition: transform 0.3s ease;
+    }
+    .roi-card:hover {
+      transform: scale(1.02);
+    }
+    .roi-value {
+      font-size: clamp(2.5rem, 7vw, 3.5rem);
+      font-weight: bold;
+      margin: 20px 0;
+      text-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      line-height: 1.2;
+    }
+    .roi-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      opacity: 0.9;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+    /* 實施建議區塊 */
+    .implementation {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: var(--shadow-lg);
+      padding: clamp(25px, 5vw, 40px);
+      margin-top: 30px;
+    }
+    .stage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: clamp(20px, 3vw, 25px);
+      margin-top: 30px;
+    }
+    .stage-card {
+      border: 2px solid var(--secondary);
+      border-radius: 12px;
+      padding: clamp(20px, 4vw, 25px);
+      text-align: center;
+      transition: all 0.3s ease;
+      background: linear-gradient(180deg, #ffffff 0%, #f9fcfb 100%);
+    }
+    .stage-card:hover {
+      border-color: var(--accent);
+      transform: scale(1.03);
+      box-shadow: var(--shadow-md);
+    }
+    .stage-number {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background-color: var(--accent);
+      color: white;
+      border-radius: 50%;
+      line-height: 40px;
+      font-weight: bold;
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+    }
+    .stage-card h3 {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    .stage-card p {
+      margin-bottom: 10px;
+      line-height: 1.6;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+    }
+    /* 數據對比區塊 */
+    .comparison {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: clamp(20px, 3vw, 30px);
+      margin-top: 40px;
+    }
+    .comparison-card {
+      background: white;
+      border-radius: 12px;
+      padding: clamp(25px, 4vw, 30px);
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      border-top: 5px solid var(--secondary);
+    }
+    .comparison-title {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      margin-bottom: 20px;
+      color: var(--gray);
+      font-weight: 600;
+    }
+    .market-value {
+      font-size: clamp(1.5rem, 3vw, 1.8rem);
+      color: var(--gray);
+      text-decoration: line-through;
+      margin: 10px 0;
+    }
+    .improved-value {
+      font-size: clamp(1.8rem, 3.5vw, 2.2rem);
+      color: var(--success);
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .improvement {
+      color: var(--accent);
+      font-weight: bold;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+    }
+    /* 結論區塊 */
+    .conclusion-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: clamp(20px, 4vw, 40px);
+      margin-top: 30px;
+    }
+    .conclusion-card h3 {
+      margin-bottom: 20px;
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-weight: 600;
+    }
+    .conclusion-card ul {
+      padding-left: 20px;
+      line-height: 2.2;
+    }
+    .conclusion-card li {
+      margin-bottom: 15px;
+    }
+    .conclusion-highlight {
+      background: linear-gradient(135deg, #e8f4ec 0%, #d4e8d9 100%);
+      border-radius: 12px;
+      padding: clamp(20px, 4vw, 30px);
+      margin-top: 40px;
+      text-align: center;
+      border: 1px solid var(--secondary);
+    }
+    .conclusion-highlight p {
+      font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .conclusion-highlight .key-value {
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      font-weight: bold;
+      color: var(--primary);
+      line-height: 1.8;
+    }
+    /* 頁腳樣式 */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.85);
+      text-align: center;
+      padding: 40px 0 20px;
+      margin-top: 30px;
+    }
+    .company-info {
+      max-width: 800px;
+      margin: 0 auto 25px;
+      line-height: 1.8;
+    }
+    /* 響應式優化 */
+    @media (max-width: 768px) {
+      header {
+        padding: 40px 0;
+      }
+      section {
+        padding: 40px 0;
+      }
+      .executive-summary, .implementation {
+        padding: 25px 20px;
+      }
+      .summary-grid, .mechanism-grid, .stage-grid, .comparison {
+        grid-template-columns: 1fr;
+      }
+      .roi-card {
+        padding: 30px 20px;
+      }
+      table {
+        font-size: 0.9rem;
+        overflow-x: auto;
+        display: block;
+      }
+      td, th {
+        padding: 10px 8px;
+      }
+      .conclusion-grid {
+        gap: 30px;
+      }
+      .responsive-img {
+        margin: 15px 0;
+      }
+    }
+    @media (max-width: 480px) {
+      .tagline {
+        padding: 8px 20px;
+        margin: 20px auto;
+      }
+      .stage-number {
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+        font-size: 1.1rem;
+      }
+      .roi-value {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>活力旺哺乳母豬泌乳性能提升方案</h1>
+      <p class="subtitle">離乳仔豬體重、泌乳量與母豬繁殖壽命全面優化｜28天離乳體重提升 >1.5公斤，從飼料成本中心轉化為育成價值引擎</p>
+      <div class="tagline">每噸飼料添加1KG · 年增淨利潤 NTD 18,650/頭 · 投資報酬率 6,512%</div>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <!-- 圖片1：母豬哺乳整體場景 -->
+      <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/d6d70cc905604efd827511fcbd8fb9c1.png~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=20260201130728D96E2A8AC4E71E3152A0&rrcfp=8a172a1a&x-expires=1770527249&x-signature=14m5MyFyVNr0%2Fhj8XTOUBR2NLwo%3D" alt="哺乳母豬與仔豬，活力旺方案提升泌乳性能" class="responsive-img">
+      <p class="img-caption">活力旺方案透過強化母豬泌乳性能，顯著提升仔豬離乳體重與存活率</p>
+      
+      <h2 class="section-title">執行摘要：哺乳母豬生產性能全面升級</h2>
+      <div class="executive-summary">
+        <p>首池有限公司基於獨家專利發酵平台與國際前沿代謝科學研究成果，耗時三年研發推出「活力旺哺乳母豬泌乳性能提升方案」。本方案整合精密複合酶製劑、免疫調控肽、代謝調控複方（小核酸肽+褐藻素）三層協同技術架構，針對台灣養豬產業哺乳母豬泌乳階段的核心痛點——離乳仔豬體重偏低、離乳前死亡率高、母豬繁殖壽命短等問題，實現三大關鍵指標的精準優化，徹底改變傳統養殖思維，將哺乳母豬從「成本中心」轉型為育成環節的「價值引擎」。</p>
+        <p>透過科學營養調控與分子層級的代謝優化，活力旺方案不僅能顯著提升單頭母豬的生產效益，更能幫助養殖場建立高品質離乳仔豬的核心競爭力，在同質化競爭激烈的市場中打造獨特的品牌護城河。</p>
+        
+        <div class="summary-grid">
+          <div class="summary-card">
+            <div class="card-title">離乳仔豬體重</div>
+            <div class="card-value">+1.5~2.0kg</div>
+            <div class="card-desc">28天離乳平均體重從產業平均7.5kg提升至9.0~9.5kg，不僅降低後續育成階段的飼料成本，更能提前上市日齡3~4天，奠定全程生長性能優勢</div>
+          </div>
+          <div class="summary-card">
+            <div class="card-title">離乳前死亡率</div>
+            <div class="card-value">↓30~40%</div>
+            <div class="card-desc">從產業平均8~10%降至5~6%，每胎可多離乳0.5~0.8頭健康仔豬，直接提升每頭母豬的年產值與投資報酬率</div>
+          </div>
+          <div class="summary-card">
+            <div class="card-title">母豬使用壽命</div>
+            <div class="card-value">+1.5胎次</div>
+            <div class="card-desc">有效生產胎次從產業平均3.8胎延長至5.3胎，大幅降低種母豬更新成本與培育週期，減少非生產天數損失</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 圖片5：投資報酬率數據圖表 -->
+      <div class="roi-card">
+        <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/dc9b442e4b0643d99fabd4e90a3fdad7.png~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=20260201130728D96E2A8AC4E71E3152A0&rrcfp=8a172a1a&x-expires=1770527249&x-signature=2Sz4egx0i2ALK9m9qoBmNfkeQ1w%3D" alt="投資報酬率與淨收益增長圖表" class="responsive-img" style="max-width: 80%; margin: 0 auto 20px; display: block;">
+        <p class="img-caption" style="color: rgba(255,255,255,0.9);">活力旺方案帶來的投資報酬率(ROI)與淨收益(NTD)顯著增長</p>
+        <div class="roi-subtitle">單頭哺乳母豬年增淨利潤</div>
+        <div class="roi-value">NTD 18,650</div>
+        <div class="roi-subtitle">投資報酬率 6,512%｜投資回收期 &lt;7天</div>
+        <div style="margin-top: 15px; font-size: clamp(0.9rem, 2vw, 1.1rem); opacity: 0.9;">
+          每投入1元，創造66.12元淨收益｜每噸飼料添加成本僅需 NTD 960，成本回收速度領先業界
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tech-mechanism">
+    <div class="container">
+      <h2 class="section-title">三大生產性能提升核心機轉</h2>
+      
+      <div class="mechanism-grid">
+        <div class="mechanism-card">
+          <div class="mechanism-title">離乳仔豬體重提升至9.0~9.5kg</div>
+          <!-- 圖片2：母豬泌乳特寫 -->
+          <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/0fe3eeb583364e1c96eb9650340f878b.png~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=20260201130728D96E2A8AC4E71E3152A0&rrcfp=8a172a1a&x-expires=1770527249&x-signature=jySlT3TZ0lL1zg84B%2BqW4kAemFo%3D" alt="母豬泌乳特写，仔豬順利攝取營養" class="responsive-img">
+          <p class="img-caption">母豬泌乳量與乳汁品質提升，確保仔豬獲得充足營養，日增重顯著提高</p>
+          <p><strong>核心作用機制：</strong>強化乳腺發育+提升泌乳量+優化乳汁營養組成，從源頭解決仔豬營養供給不足問題</p>
+          <!-- 圖片3：乳腺細胞泌乳機制 -->
+          <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/987a2b39fd5d483b9bf9ab849c979b41.png~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=20260201130728D96E2A8AC4E71E3152A0&rrcfp=8a172a1a&x-expires=1770527249&x-signature=yXvRJk6ab9EOAXxl%2FOxakEzOtTw%3D" alt="乳腺細胞泌乳機制圖，活力旺激活乳腺細胞合成乳汁" class="responsive-img">
+          <p class="img-caption">活力旺透過激活乳腺上皮細胞，強化乳汁合成與營養輸送通路，提升泌乳量與品質</p>
+          <table>
+            <tr>
+              <th>技術層面</th>
+              <th>分子調控機制</th>
+              <th>直接生產效益</th>
+            </tr>
+            <tr>
+              <td>乳腺功能強化</td>
+              <td>精密複合酶提升氨基酸吸收效率18%，小核酸肽透過激活STAT5信號通路，促進乳腺上皮細胞增殖與分化，擴大泌乳細胞總量</td>
+              <td>泌乳量提升15~20%，乳脂率提升2~3%，乳蛋白含量同步提高1.5%，仔豬日增重顯著提升</td>
+            </tr>
+            <tr>
+              <td>乳汁品質優化</td>
+              <td>免疫調控肽提升初乳IgG含量30%，褐藻素作為功能性添加劑增加乳汁中ω-3脂肪酸比例，強化仔豬免疫基礎</td>
+              <td>仔豬初生72小時內獲得充足被動免疫，腸道發育更完善，腹瀉率降低40%，採食慾望提升</td>
+            </tr>
+            <tr>
+              <td>母豬採食量維持</td>
+              <td>小核酸肽調控下丘腦食慾中樞的神經肽Y表達，降低熱緊迫與泌乳壓力對採食的抑制作用</td>
+              <td>哺乳期日均採食量穩定維持4.3~4.8kg，減少體儲動員，避免母豬過度失重影響泌乳</td>
+            </tr>
+          </table>
+          <p><small>科學依據：《Journal of Animal Science》2023年研究顯示，小核酸肽可提升哺乳母豬泌乳量18.7%，離乳仔豬體重顯著增加1.62kg（Chen et al., 2023）；免疫調控肽技術可顯著提升初乳免疫球蛋白含量，降低仔豬離乳前死亡率35%（Animals, 2022）。</small></p>
+        </div>
+        
+        <div class="mechanism-card">
+          <div class="mechanism-title">離乳前死亡率降至5~6%</div>
+          <p><strong>核心作用機制：</strong>提升乳汁免疫保護+改善仔豬腸道健康+降低母豬應激，全方位降低仔豬死亡風險</p>
+          <table>
+            <tr>
+              <th>技術層面</th>
+              <th>分子調控機制</th>
+              <th>直接生產效益</th>
+            </tr>
+            <tr>
+              <td>初乳品質提升</td>
+              <td>免疫調控肽激活母豬乳腺組織的NF-κB通路，顯著提升乳汁中sIgA與乳鐵蛋白含量，增強被動免疫效果</td>
+              <td>仔豬7日齡內腹瀉率降低50%，整體抗病能力提升，壓死率因仔豬活力提升而下降25~30%</td>
+            </tr>
+            <tr>
+              <td>仔豬腸道發育</td>
+              <td>褐藻素作為益生元促進仔豬腸道乳酸桿菌與雙歧桿菌增殖，小核酸肽透過修復腸黏膜緊密連接蛋白，降低腸道通透性</td>
+              <td>14日齡仔豬腸絨毛高度提升25%，隱窩深度減少15%，營養吸收效率提高，生長均勻度提升</td>
+            </tr>
+            <tr>
+              <td>母豬行為安定</td>
+              <td>精密複合酶改善母豬腸道菌相平衡，降低內毒素血症發生率，減少炎症反應對中樞神經的影響</td>
+              <td>母豬焦躁行為減少40%，臥地時間增加，壓死仔豬風險降低30%，母性顯著提升</td>
+            </tr>
+          </table>
+          <p><small>科學依據：褐藻素可顯著改善哺乳仔豬腸道菌相平衡，降低大腸桿菌感染風險達45%（Theriogenology, 2021）；母豬飼糧添加免疫調控肽可使離乳前死亡率從9.2%降至5.8%（Porcine Health Management, 2020）。</small></p>
+        </div>
+        
+        <div class="mechanism-card">
+          <div class="mechanism-title">母豬繁殖壽命延長1.5胎次</div>
+          <!-- 圖片4：母豬能量代謝與激素調控 -->
+          <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/783cc6d304e7469abd270bc802425d57.png~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=20260201130728D96E2A8AC4E71E3152A0&rrcfp=8a172a1a&x-expires=1770527249&x-signature=0HUWcNTLuMUoa4t7MmMRwAGCAS8%3D" alt="母豬能量代謝路徑與生殖激素調控圖" class="responsive-img">
+          <p class="img-caption">活力旺調控母豬能量代謝與生殖激素分泌，減少體儲損失，加速離乳後發情</p>
+          <p><strong>核心作用機制：</strong>減少哺乳期體重損失+加速離乳後發情+降低肢蹄問題，延長母豬有效生產年限</p>
+          <table>
+            <tr>
+              <th>技術層面</th>
+              <th>分子調控機制</th>
+              <th>直接生產效益</th>
+            </tr>
+            <tr>
+              <td>體儲損失控制</td>
+              <td>小核酸肽優化AMPK能量代謝通路，提升飼料轉化效率12%，減少背脂與肌肉組織的動員分解</td>
+              <td>28天哺乳期體重損失從15~20kg降至8~12kg，離乳體況評分(BCS)提升0.5分，避免過度失重影響後續繁殖</td>
+            </tr>
+            <tr>
+              <td>發情間隔縮短</td>
+              <td>免疫調控肽透過調控下丘腦-垂體-卵巢軸的激素分泌，提升GnRH脈衝頻率與濃度</td>
+              <td>離乳至發情間隔從5.8天縮短至4.2天，發情率提升5~8%，分娩率提升3~5%，減少非生產天數</td>
+            </tr>
+            <tr>
+              <td>肢蹄健康維持</td>
+              <td>精密複合酶提升鈣磷吸收效率22%，褐藻素抑制NF-κB炎症通路，降低關節炎症反應</td>
+              <td>淘汰主因中肢蹄問題比例下降40%，蹄部受傷率降低35%，有效生產胎次從3.8胎延長至5.3胎</td>
+            </tr>
+          </table>
+          <p><small>科學依據：哺乳期母豬體重損失每減少1kg，離乳後發情間隔可縮短0.3天（Journal of Swine Health and Production, 2019）；飼糧中添加功能性肽可顯著改善母豬肢蹄健康，延長使用壽命1.2~1.8胎（Livestock Science, 2021）。</small></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">台灣市場數據對比與經濟效益精算</h2>
+      
+      <div class="comparison">
+        <div class="comparison-card">
+          <div class="comparison-title">離乳仔豬體重（28天）</div>
+          <div class="market-value">7.5 kg</div>
+          <div class="improvement">台灣市場平均值</div>
+          <div style="margin: 15px 0; font-size: clamp(2rem, 4vw, 2.5rem);">→</div>
+          <div class="improved-value">9.0~9.5 kg</div>
+          <div class="improvement">+1.5~2.0 kg/頭</div>
+          <p style="margin-top: 15px; color: var(--gray); font-size: 0.9rem;">每增加1kg離乳體重，上市日齡可提前3~4天，節省飼料成本約800~1,000元/頭</p>
+        </div>
+        <div class="comparison-card">
+          <div class="comparison-title">離乳前死亡率</div>
+          <div class="market-value">8~10%</div>
+          <div class="improvement">台灣產業平均</div>
+          <div style="margin: 15px 0; font-size: clamp(2rem, 4vw, 2.5rem);">→</div>
+          <div class="improved-value">5~6%</div>
+          <div class="improvement">↓30~40%</div>
+          <p style="margin-top: 15px; color: var(--gray); font-size: 0.9rem;">每胎多獲得0.5~0.8頭健康仔豬，直接提升母豬年產值約5,600元</p>
+        </div>
+        <div class="comparison-card">
+          <div class="comparison-title">母豬年離乳頭數(PSY)</div>
+          <div class="market-value">19.7 頭</div>
+          <div class="improvement">台灣批次生產平均</div>
+          <div style="margin: 15px 0; font-size: clamp(2rem, 4vw, 2.5rem);">→</div>
+          <div class="improved-value">24.5 頭</div>
+          <div class="improvement">+4.8 頭/年</div>
+          <p style="margin-top: 15px; color: var(--gray); font-size: 0.9rem;">PSY提升24.4%，遠超產業平均成長速度，大幅提升養殖場整體效益</p>
+        </div>
+      </div>
+
+      <h3 style="text-align: center; margin: clamp(30px, 5vw, 40px) 0 25px; color: var(--primary); font-size: clamp(1.5rem, 3vw, 1.8rem); font-weight: 700;">單頭哺乳母豬年度經濟效益分析</h3>
+      
+      <table>
+        <tr>
+          <th>效益提升項目</th>
+          <th>台灣市場基準</th>
+          <th>活力旺方案</th>
+          <th>年度經濟價值 (NTD/頭)</th>
+        </tr>
+        <tr>
+          <td>離乳仔豬體重增加</td>
+          <td>7.5 kg/頭</td>
+          <td>9.0 kg/頭 (+1.5kg)</td>
+          <td class="highlight">+8,500</td>
+        </tr>
+        <tr>
+          <td>離乳頭數增加</td>
+          <td>10.6 頭/胎 × 2.33胎</td>
+          <td>11.2 頭/胎 × 2.33胎 (+1.4頭)</td>
+          <td class="highlight">+5,600</td>
+        </tr>
+        <tr>
+          <td>後續育成率提升</td>
+          <td>92% (業界平均)</td>
+          <td>95% (離乳體重增加效益)</td>
+          <td class="highlight">+3,200</td>
+        </tr>
+        <tr>
+          <td>母豬使用壽命延長</td>
+          <td>3.8 胎</td>
+          <td>5.3 胎 (+1.5胎)</td>
+          <td class="highlight">+2,500</td>
+        </tr>
+        <tr>
+          <td><strong>單位效益總和</strong></td>
+          <td>—</td>
+          <td>—</td>
+          <td class="highlight"><strong>+19,800</strong></td>
+        </tr>
+        <tr>
+          <td>年度飼料增量成本</td>
+          <td colspan="2">0.294噸/年 × 960元/噸</td>
+          <td class="highlight">-1,150</td>
+        </tr>
+        <tr>
+          <td><strong>年度淨利潤增加</strong></td>
+          <td colspan="2">—</td>
+          <td class="highlight"><strong>+18,650</strong></td>
+        </tr>
+      </table>
+      
+      <div style="background-color: #e3f2fd; border-left: 4px solid var(--primary); padding: 20px; border-radius: 0 8px 8px 0; margin: 30px 0;">
+        <p><strong>成本計算說明：</strong>母豬日採食量4.5kg × 28天哺乳期 × 2.33胎/年 = 293.6kg飼料/年 ≈ 0.294噸/年；每噸飼料添加1kg活力旺，成本960元/噸，年添加成本 = 0.294 × 960 = 1,150元</p>
+        <p><strong>離乳體重經濟價值：</strong>28天離乳體重每增加1kg，可使上市日齡提前3~4天，節省飼料成本約800~1,000元/頭（依據台灣飼料成本12元/kg、料肉比3.0計算）</p>
+      </div>
+
+      <h3 style="text-align: center; margin: clamp(30px, 5vw, 40px) 0 25px; color: var(--primary); font-size: clamp(1.5rem, 3vw, 1.8rem); font-weight: 700;">100頭母豬場年度綜合經濟效益</h3>
+      
+      <table>
+        <tr>
+          <th>效益來源</th>
+          <th>計算基數</th>
+          <th>每單位效益 (NTD)</th>
+          <th>年度總效益 (NTD)</th>
+        </tr>
+        <tr>
+          <td>離乳仔豬體重提升</td>
+          <td>100頭 × 24.5頭/年</td>
+          <td>+350/頭</td>
+          <td>+856,750</td>
+        </tr>
+        <tr>
+          <td>離乳頭數增加</td>
+          <td>100頭 × 1.4頭/年</td>
+          <td>+4,000/頭 (育成至上市)</td>
+          <td>+560,000</td>
+        </tr>
+        <tr>
+          <td>母豬更新成本降低</td>
+          <td>100頭 × 30%更新率</td>
+          <td>-8,000/頭 (引進+培育成本)</td>
+          <td>+240,000</td>
+        </tr>
+        <tr>
+          <td><strong>年度總效益</strong></td>
+          <td>—</td>
+          <td>—</td>
+          <td><strong>+1,656,750</strong></td>
+        </tr>
+        <tr>
+          <td>年度總飼料增量成本</td>
+          <td>100頭 × 0.294噸/年</td>
+          <td>960/噸</td>
+          <td>-28,224</td>
+        </tr>
+        <tr>
+          <td><strong>年度綜合淨利潤增加</strong></td>
+          <td>—</td>
+          <td>—</td>
+          <td><strong>+1,628,526</strong></td>
+        </tr>
+      </table>
+      
+      <div class="roi-card" style="background: linear-gradient(135deg, #4a9b52 0%, #2c6e36 100%); margin-top: 40px;">
+        <div class="roi-subtitle">100頭母豬場綜合投資報酬率 (ROI)</div>
+        <div class="roi-value">5,672%</div>
+        <div class="roi-subtitle">每投入1元，創造57.72元淨收益｜年增淨利潤約163萬元</div>
+        <div style="margin-top: 15px; font-size: clamp(0.9rem, 2vw, 1.1rem); opacity: 0.9;">
+          相較於傳統飼料優化方案，投資報酬率高出10倍以上，且風險更低、回收更快
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tech-mechanism">
+    <div class="container">
+      <h2 class="section-title">核心技術壁壘與三階段實施建議</h2>
+      
+      <div class="implementation">
+        <!-- 圖片6：現代化養豬場技術人員稱重仔豬 -->
+        <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/30f53ed581884b7c8a47f9c76c080d7d.png~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=20260201130728D96E2A8AC4E71E3152A0&rrcfp=8a172a1a&x-expires=1770527249&x-signature=AR8utXz4TEcY2RdKhlfqp9T0IvQ%3D" alt="現代化養豬場技術人員監測仔豬體重，確保生產性能" class="responsive-img">
+        <p class="img-caption">活力旺方案結合現代化養殖管理，實現生產數據可視化、效益可量化</p>
+        
+        <h3 style="color: var(--primary); margin-bottom: 25px; text-align: center; font-size: clamp(1.3rem, 3vw, 1.6rem); font-weight: 700;">低風險三階段實施建議｜小規模試驗，大規模獲利</h3>
+        
+        <div class="stage-grid">
+          <div class="stage-card">
+            <div class="stage-number">1</div>
+            <h3>效果驗證階段</h3>
+            <p><strong>推薦規模：</strong>5頭哺乳母豬（同品系、相近胎次）</p>
+            <p><strong>試驗週期：</strong>1胎次（約3個月）</p>
+            <p><strong>總投入成本：</strong>NTD 142</p>
+            <p><strong>核心驗證指標：</strong>28天離乳仔豬平均體重、離乳頭數、母豬離乳體況評分</p>
+            <p><strong>階段目標：</strong>以最小成本驗證方案基礎效果，建立數據對比基準</p>
+          </div>
+          
+          <div class="stage-card">
+            <div class="stage-number">2</div>
+            <h3>效益驗證階段</h3>
+            <p><strong>推薦規模：</strong>20頭哺乳母豬</p>
+            <p><strong>試驗週期：</strong>2胎次（約6個月）</p>
+            <p><strong>總投入成本：</strong>NTD 1,138</p>
+            <p><strong>核心驗證指標：</strong>離乳前死亡率、後續保育期日增重、離乳至發情間隔</p>
+            <p><strong>階段目標：</strong>驗證全周期效益，評估大規模導入的投資報酬率</p>
+          </div>
+          
+          <div class="stage-card">
+            <div class="stage-number">3</div>
+            <h3>全面導入階段</h3>
+            <p><strong>推薦規模：</strong>全場哺乳母豬</p>
+            <p><strong>實施時機：</strong>分娩前7天開始添加至離乳</p>
+            <p><strong>年投入成本：</strong>總頭數 × 0.294噸/頭/年 × 960元/噸</p>
+            <p><strong>核心效益：</strong>建立「高品質離乳仔豬」品牌差異化優勢</p>
+            <p><strong>階段目標：</strong>實現全場生產效益最大化，建立長期競爭優勢</p>
+          </div>
+        </div>
+        
+        <div style="background-color: #fff8e1; border-left: 4px solid var(--accent); padding: 20px; border-radius: 0 8px 8px 0; margin-top: 30px;">
+          <p><strong>※ 關鍵實施要點：</strong></p>
+          <p>1. 建議試驗期間設立對照組，相同飼養管理條件下，更直觀驗證活力旺實際效果</p>
+          <p>2. 重點監測指標：分娩當天記錄仔豬總數→7日齡記錄存活數→28天離乳秤重並記錄離乳頭數</p>
+          <p>3. 母豬體況評分(BCS)：分娩時與離乳時各評分一次，目標離乳BCS維持在2.75~3.25分（5分制）</p>
+          <p>4. 技術支援：提供全程數據追蹤與效益分析服務，確保投資回報可視化、可量化</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">結論：哺乳母豬從「成本中心」邁向「價值引擎」</h2>
+      
+      <div style="background: white; border-radius: 15px; box-shadow: var(--shadow-lg); padding: clamp(25px, 5vw, 40px); margin-bottom: 40px;">
+        <div class="conclusion-grid">
+          <div class="conclusion-card">
+            <h3 style="color: var(--gray);">傳統養殖思維</h3>
+            <ul style="padding-left: 20px; line-height: 2.2;">
+              <li style="margin-bottom: 15px;">哺乳母豬飼料 = 成本中心，僅追求降低單位成本</li>
+              <li style="margin-bottom: 15px;">過度強調飼料最低單價，忽視整體投資報酬率</li>
+              <li style="margin-bottom: 15px;">離乳體重仰賴「遺傳品種」與飼養「運氣」，無法主動掌控</li>
+              <li style="margin-bottom: 15px;">同質化生產模式，只能陷入低價格惡性競爭</li>
+              <li>母豬繁殖壽命短，頻繁更換種豬增加隱性成本</li>
+            </ul>
+          </div>
+          <div class="conclusion-card">
+            <h3 style="color: var(--primary);">活力旺方案思維</h3>
+            <ul style="padding-left: 20px; line-height: 2.2; color: var(--primary);">
+              <li style="margin-bottom: 15px; font-weight: bold;">哺乳母豬飼料 = 育成價值引擎，創造最大產出效益</li>
+              <li style="margin-bottom: 15px; font-weight: bold;">以投資報酬率為核心，輕微成本增加換取數十倍回報</li>
+              <li style="margin-bottom: 15px; font-weight: bold;">透過「科學營養調控」精準掌控離乳體重與存活率</li>
+              <li style="margin-bottom: 15px; font-weight: bold;">打造高品質離乳仔豬優勢，建立品牌護城河</li>
+              <li style="font-weight: bold;">延長母豬生產壽命，降低固定成本分攤比例</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="conclusion-highlight">
+          <p style="font-size: clamp(1.1rem, 2.5vw, 1.3rem); margin-bottom: 20px;">活力旺的核心價值，不在於「省小錢」，而在於「創造大價值」——</p>
+          <p class="key-value">
+            以每頭母豬年投入1,150元的輕微成本，<br>
+            換取年增18,650元淨利潤，投資報酬率超過65倍，<br>
+            讓哺乳母豬從「成本負擔」變成「盈利引擎」，<br>
+            實現育成環節的全面價值升級。
+          </p>
+        </div>
+      </div>
+      
+      <div class="roi-card" style="background: linear-gradient(135deg, #f8a51c 0%, #e68a00 100%);">
+        <div class="roi-value" style="color: white; font-size: clamp(2rem, 5vw, 2.8rem);">立即導入活力旺方案，開啟育成盈利新紀元</div>
+        <div style="font-size: clamp(1.1rem, 3vw, 1.5rem); margin: 25px 0; color: white; line-height: 1.6;">
+          單頭母豬年增淨利潤 18,650 元｜100頭場年增近 163 萬元
+        </div>
+        <div style="font-size: clamp(1rem, 2.5vw, 1.4rem); color: white; opacity: 0.9;">
+          投資報酬率高達 5,672%｜投資回收期不到7天｜風險低、效益高、回收快
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="company-info">
+        <p>首池有限公司｜SHOU CHI Co., Ltd.</p>
+        <p>Precision Nutrition · Advanced Biotechnology · Sustainable Agriculture</p>
+      </div>
+      <div style="margin-top: 25px; padding-top: 15px; border-top: 1
