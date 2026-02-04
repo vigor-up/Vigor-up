@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活力旺畜產性能提升方案</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', '思源黑體', sans-serif;
+        }
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* 頁頭樣式 */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        /* 導航欄樣式 */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            padding: 1rem 0;
+        }
+        .nav-link {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            color: #333;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        .nav-link:hover {
+            background-color: #3498db;
+            color: white;
+        }
+        .nav-link.active {
+            background-color: #2980b9;
+            color: white;
+        }
+        /* 主要內容樣式 */
+        .main-content {
+            padding: 3rem 0;
+        }
+        .hero-section {
+            background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)), url('assets/hero-image.jpg') center/cover no-repeat;
+            color: white;
+            padding: 6rem 0;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        .hero-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+        .hero-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            margin: 3rem 0;
+        }
+        .stat-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            min-width: 200px;
+        }
+        .stat-card h3 {
+            font-size: 3rem;
+            color: #3498db;
+            margin-bottom: 0.5rem;
+        }
+        .stat-card p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+        .products-section {
+            margin-top: 4rem;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: #3498db;
+            margin: 10px auto;
+        }
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .gallery-item {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        .gallery-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .gallery-caption {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .gallery-caption h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        .gallery-caption p {
+            color: #666;
+        }
+        /* 頁腳樣式 */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        .footer-info {
+            flex: 1;
+            min-width: 250px;
+        }
+        .footer-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .footer-info p {
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+        .footer-links {
+            flex: 1;
+            min-width: 250px;
+        }
+        .footer-links h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .footer-links ul {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        .footer-links a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+        }
+        /* 響應式調整 */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            .hero-section {
+                padding: 4rem 0;
+            }
+            .hero-section h2 {
+                font-size: 1.8rem;
+            }
+            .stats-container {
+                gap: 2rem;
+            }
+            .nav-container {
+                gap: 5px;
+            }
+            .nav-link {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 頁頭 -->
+    <header>
+        <div class="container">
+            <h1>活力旺畜產性能提升方案</h1>
+            <p>專注動物養殖效能優化，創造產業高價值回報</p>
+        </div>
+    </header>
+
+    <!-- 導航欄 -->
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="nav-link active">首頁</a>
+            <a href="活力旺種公豬精液品質提升方案.html" class="nav-link">種公豬精液品質方案</a>
+            <a href="活力旺種雞性能提升方案TDS.html" class="nav-link">種雞性能提升方案</a>
+            <a href="活力旺蛋雞性能提升方案 TDS.html" class="nav-link">蛋雞性能提升方案</a>
+            <a href="活力旺土雞性能提升方案 TDS.html" class="nav-link">土雞性能提升方案</a>
+            <a href="活力旺白肉鸡FCR性能提升方案 TDS.html" class="nav-link">白肉雞FCR方案</a>
+            <a href="活力旺仔豬人工乳性能提升方案.html" class="nav-link">仔豬人工乳方案</a>
+            <a href="活力旺哺乳母豬性能提升方案.html" class="nav-link">哺乳母豬方案</a>
+        </div>
+    </nav>
+
+    <!-- 主要內容 -->
+    <main class="main-content">
+        <div class="container">
+            <!-- 英雄區段 -->
+            <section class="hero-section">
+                <h2>科學養殖解決方案，驅動產業升級</h2>
+                <p>活力旺系列方案針對不同畜種生長階段特性，量身打造營養與管理方案，有效提升生產效能與產品品質</p>
+                <a href="#products" class="nav-link" style="display: inline-block;">探索方案詳情</a>
+            </section>
+
+            <!-- 核心數據 -->
+            <section class="stats-container">
+                <div class="stat-card">
+                    <h3>92%</h3>
+                    <p>受精率提升</p>
+                </div>
+                <div class="stat-card">
+                    <h3>89%</h3>
+                    <p>孵化率提升</p>
+                </div>
+                <div class="stat-card">
+                    <h3>↑15%</h3>
+                    <p>生產效能提升</p>
+                </div>
+                <div class="stat-card">
+                    <h3>↓20%</h3>
+                    <p>養殖成本降低</p>
+                </div>
+            </section>
+
+            <!-- 方案展示 -->
+            <section id="products" class="products-section">
+                <h2 class="section-title">系列方案介紹</h2>
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <img src="assets/種公豬方案.jpg" alt="種公豬精液品質提升方案" class="gallery-img">
+                        <div class="gallery-caption">
+                            <h3>種公豬精液品質提升方案</h3>
+                            <p>優化精液品質與數量，提升受精成功率</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/種雞方案.jpg" alt="種雞性能提升方案" class="gallery-img">
+                        <div class="gallery-caption">
+                            <h3>種雞性能提升方案</h3>
+                            <p>延長產蛋週期，提升種蛋品質</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/蛋雞方案.jpg" alt="蛋雞性能提升方案" class="gallery-img">
+                        <div class="gallery-caption">
+                            <h3>蛋雞性能提升方案</h3>
+                            <p>提高產蛋率，改善蛋殼品質與蛋黃營養</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/土雞方案.jpg" alt="土雞性能提升方案" class="gallery-img">
+                        <div class="gallery-caption">
+                            <h3>土雞性能提升方案</h3>
+                            <p>強化免疫力，提升肉質風味與生長速度</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/白肉雞方案.jpg" alt="白肉雞FCR性能提升方案" class="gallery-img">
+                        <div class="gallery-caption">
+                            <h3>白肉雞FCR性能提升方案</h3>
+                            <p>優化飼料轉化率，縮短育肥週期</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/仔豬方案.jpg" alt="仔豬人工乳性能提升方案" class="gallery-img">
+                        <div class="gallery-caption">
+                            <h3>仔豬人工乳性能提升方案</h3>
+                            <p>提高存活率，促進腸道健康與生長發育</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/母豬方案.jpg" alt="哺乳母豬性能提升方案" class="gallery-img">
+                        <div class="gallery-caption">
+                            <h3>哺乳母豬性能提升方案</h3>
+                            <p>提升泌乳量與乳質，增強母豬繁殖性能</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 頁腳 -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-info">
+                <h3>活力旺畜產科技</h3>
+                <p>專注動物養殖性能提升，提供全方位解決方案與技術支援，與客戶共同創造產業價值。</p>
+            </div>
+            <div class="footer-links">
+                <h3>快速連結</h3>
+                <ul>
+                    <li><a href="活力旺種公豬精液品質提升方案.html">種公豬方案</a></li>
+                    <li><a href="活力旺種雞性能提升方案TDS.html">種雞方案</a></li>
+                    <li><a href="活力旺蛋雞性能提升方案 TDS.html">蛋雞方案</a></li>
+                    <li><a href="活力旺仔豬人工乳性能提升方案.html">仔豬方案</a></li>
+                    <li><a href="活力旺哺乳母豬性能提升方案.html">母豬方案</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container copyright">
+            <p>&copy; 2024 活力旺畜產性能提升方案 版權所有</p>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滾動效果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 導航欄滾動效果
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = '0 4px 10px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.boxShadow = '0 2px 5px rgba(0,0,0,0.05)';
+            }
+        });
+    </script>
+</body>
+</html>
