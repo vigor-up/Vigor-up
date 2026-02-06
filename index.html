@@ -927,3 +927,30 @@
     </script>
 </body>
 </html>
+<script>
+// 驗證圖片是否可載入
+function checkImagePath(src) {
+    const img = new Image();
+    img.onload = () => console.log(`✅ 圖片正常：${src}`);
+    img.onerror = () => console.error(`❌ 圖片錯誤：${src}（檔名/路徑錯誤）`);
+    img.src = src;
+}
+
+// 替換成你的圖片路徑
+checkImagePath("images/logo.png");
+checkImagePath("images/banner.jpg");
+
+// 驗證分頁連結（檢查檔案是否存在）
+function checkPageLink(href) {
+    fetch(href)
+        .then(res => {
+            if (res.ok) console.log(`✅ 分頁正常：${href}`);
+            else console.error(`❌ 分頁錯誤：${href}（狀態碼：${res.status}）`);
+        })
+        .catch(err => console.error(`❌ 分頁不存在：${href}`, err));
+}
+
+// 替換成你的分頁路徑
+checkPageLink("index.html");
+checkPageLink("page2.html");
+</script>
