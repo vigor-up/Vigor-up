@@ -2,77 +2,114 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>首池有限公司｜活力旺系列產品總覽 - 精準營養解決方案</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
+        /* === 行動裝置優先變數定義 === */
         :root {
+            /* 品牌色彩 */
             --primary-green: #2E7D32;
             --secondary-green: #1B5E20;
             --accent-gold: #FFB300;
-            --primary-blue: #1A6FD6;
-            --primary-orange: #E65100;
-            --primary-red: #C62828;
             --primary-dark: #263238;
             --light-bg: #F9F9F9;
-            --card-shadow: 0 8px 30px rgba(0,0,0,0.08);
-            --card-shadow-hover: 0 15px 40px rgba(46, 125, 50, 0.15);
-            --border-radius: 16px;
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            
+            /* 設計系統 */
+            --border-radius: 12px;
+            --card-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --card-shadow-hover: 0 8px 24px rgba(46, 125, 50, 0.15);
+            --transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            
+            /* 安全區域 (iOS) */
+            --safe-top: env(safe-area-inset-top, 0px);
+            --safe-bottom: env(safe-area-inset-bottom, 0px);
+            --safe-left: env(safe-area-inset-left, 0px);
+            --safe-right: env(safe-area-inset-right, 0px);
         }
 
+        /* === 重置與基礎樣式 === */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+        }
+
+        html {
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         body {
             font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
             background-color: #f8fafc;
             color: #2d3748;
-            line-height: 1.7;
+            line-height: 1.6;
             overflow-x: hidden;
+            min-height: 100vh;
+            min-height: -webkit-fill-available; /* iOS 100vh 修正 */
+            padding-top: var(--safe-top);
+            padding-bottom: var(--safe-bottom);
         }
 
+        /* === 容器系統 === */
         .container {
             width: 100%;
-            max-width: 1280px;
+            padding: 0 clamp(16px, 5vw, 24px);
             margin: 0 auto;
-            padding: 0 20px;
         }
 
-        /* 語言切換器樣式 */
+        /* === 語言切換器 (行動裝置優先) === */
         .language-switcher {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: calc(12px + var(--safe-top));
+            right: clamp(12px, 4vw, 20px);
             z-index: 1000;
             display: flex;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 8px 12px;
-            border-radius: 30px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(46, 125, 50, 0.2);
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 8px 10px;
+            border-radius: 24px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(46, 125, 50, 0.15);
+            max-width: calc(100vw - 32px);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .language-switcher::-webkit-scrollbar {
+            display: none;
         }
 
         .lang-btn {
             background: none;
             border: none;
-            padding: 6px 12px;
+            padding: 10px 16px;
             border-radius: 20px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
+            font-size: clamp(0.8rem, 3vw, 0.9rem);
+            transition: var(--transition);
             color: var(--primary-dark);
+            min-width: 48px;
+            min-height: 48px;
+            white-space: nowrap;
+            touch-action: manipulation;
+            flex-shrink: 0;
         }
 
-        .lang-btn:hover {
-            background: rgba(46, 125, 50, 0.1);
+        .lang-btn:active {
+            background: rgba(46, 125, 50, 0.15);
+            transform: scale(0.96);
         }
 
         .lang-btn.active {
@@ -80,26 +117,29 @@
             color: white;
         }
 
-        /* 頁頭樣式 */
+        /* 平板以上樣式 */
+        @media (min-width: 768px) {
+            .language-switcher {
+                top: 20px;
+                right: 20px;
+                gap: 10px;
+                padding: 10px 14px;
+            }
+            
+            .lang-btn {
+                min-width: 44px;
+                min-height: 44px;
+            }
+        }
+
+        /* === 頁頭區域 (行動裝置優先) === */
         header {
             background: linear-gradient(135deg, var(--primary-green) 0%, #1b5e20 100%);
             color: white;
             position: relative;
             overflow: hidden;
-            padding: 40px 0 80px;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".1" fill="white"/></svg>');
-            background-size: cover;
-            background-position: bottom;
-            opacity: 0.05;
+            padding: clamp(32px, 10vw, 64px) 0 clamp(48px, 12vw, 96px);
+            padding-top: calc(clamp(32px, 10vw, 64px) + var(--safe-top));
         }
 
         .header-content {
@@ -114,135 +154,185 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: clamp(12px, 3vw, 20px);
+            margin-bottom: clamp(16px, 4vw, 24px);
         }
 
         .logo-icon {
             background: white;
-            width: 80px;
-            height: 80px;
+            width: clamp(72px, 18vw, 96px);
+            height: clamp(72px, 18vw, 96px);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
             overflow: hidden;
+            will-change: transform;
         }
 
         .logo-icon img {
             width: 100%;
             height: 100%;
             object-fit: contain;
+            padding: 12px;
         }
 
         h1 {
-            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-size: clamp(1.75rem, 5.5vw, 3rem);
             font-weight: 900;
-            margin-bottom: 15px;
+            margin-bottom: clamp(12px, 3vw, 20px);
+            line-height: 1.2;
             letter-spacing: -0.5px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
         .company-name {
-            font-size: 1.8rem;
+            font-size: clamp(1.25rem, 3.5vw, 1.75rem);
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: clamp(8px, 2vw, 16px);
             color: rgba(255,255,255,0.95);
         }
 
         .tagline {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.8vw, 1.25rem);
             opacity: 0.9;
             max-width: 700px;
-            margin: 0 auto 25px;
-            line-height: 1.6;
+            margin: 0 auto clamp(24px, 5vw, 32px);
+            line-height: 1.5;
+            padding: 0 clamp(16px, 4vw, 24px);
         }
 
+        /* === 統計卡片網格 (行動裝置優先) === */
         .stats-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: clamp(12px, 3vw, 20px);
+            margin-top: clamp(32px, 8vw, 48px);
+            padding: 0 clamp(8px, 3vw, 16px);
+        }
+
+        @media (min-width: 640px) {
+            .stats-container {
+                grid-template-columns: repeat(4, 1fr);
+                gap: clamp(16px, 4vw, 24px);
+            }
         }
 
         .stat-item {
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-            padding: 20px 25px;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: clamp(16px, 4vw, 24px) clamp(12px, 3vw, 20px);
             border-radius: var(--border-radius);
             text-align: center;
-            min-width: 160px;
             border: 1px solid rgba(255,255,255,0.2);
             transition: var(--transition);
+            will-change: transform;
         }
 
-        .stat-item:hover {
-            background: rgba(255,255,255,0.25);
-            transform: translateY(-5px);
+        .stat-item:active {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* 桌面懸停效果 (僅支援時顯示) */
+        @media (hover: hover) and (pointer: fine) {
+            .stat-item:hover {
+                background: rgba(255,255,255,0.2);
+                transform: translateY(-4px);
+            }
         }
 
         .stat-value {
-            font-size: 2.2rem;
+            font-size: clamp(1.75rem, 4.5vw, 2.25rem);
             font-weight: 800;
             color: var(--accent-gold);
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
+            line-height: 1.1;
         }
 
         .stat-label {
-            font-size: 0.95rem;
+            font-size: clamp(0.8rem, 2.2vw, 0.95rem);
             opacity: 0.9;
+            line-height: 1.3;
         }
 
-        /* 主內容區 */
+        /* === 主內容區 === */
         main {
-            padding: 60px 0;
+            padding: clamp(48px, 10vw, 80px) 0;
             position: relative;
             z-index: 1;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: clamp(40px, 8vw, 64px);
+            padding: 0 clamp(16px, 4vw, 24px);
         }
 
         .section-title h2 {
-            font-size: 2.2rem;
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
             color: var(--primary-dark);
-            margin-bottom: 15px;
+            margin-bottom: clamp(12px, 3vw, 20px);
             position: relative;
             display: inline-block;
+            line-height: 1.2;
         }
 
         .section-title h2::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -8px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: clamp(60px, 15vw, 80px);
             height: 4px;
             background: linear-gradient(90deg, var(--primary-green), var(--accent-gold));
             border-radius: 2px;
         }
 
         .section-title p {
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2.5vw, 1.125rem);
             color: #64748b;
             max-width: 700px;
             margin: 0 auto;
+            line-height: 1.6;
         }
 
-        /* 產品網格 */
+        /* === 產品網格系統 (行動裝置優先) === */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 70px;
+            grid-template-columns: 1fr;
+            gap: clamp(20px, 5vw, 32px);
+            margin-bottom: clamp(48px, 10vw, 80px);
+            padding: 0 clamp(12px, 3vw, 20px);
         }
 
+        /* 平板 (2列) */
+        @media (min-width: 640px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: clamp(24px, 6vw, 32px);
+            }
+        }
+
+        /* 桌面 (3列) */
+        @media (min-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
+        }
+
+        /* 超大桌面 (4列) */
+        @media (min-width: 1440px) {
+            .products-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* === 產品卡片 === */
         .product-card {
             background: white;
             border-radius: var(--border-radius);
@@ -255,6 +345,20 @@
             position: relative;
             border: 1px solid #e2e8f0;
             cursor: pointer;
+            will-change: transform, box-shadow;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .product-card:active {
+            transform: translateY(-4px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .product-card:hover {
+                transform: translateY(-8px);
+                box-shadow: var(--card-shadow-hover);
+            }
         }
 
         .product-card::before {
@@ -263,18 +367,13 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 5px;
+            height: 4px;
             background: linear-gradient(90deg, var(--primary-green), var(--accent-gold));
             z-index: 2;
         }
 
-        .product-card:hover {
-            transform: translateY(-12px);
-            box-shadow: var(--card-shadow-hover);
-        }
-
         .product-image {
-            height: 200px;
+            height: clamp(160px, 40vw, 200px);
             width: 100%;
             overflow: hidden;
             position: relative;
@@ -285,27 +384,30 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.6s ease;
+            loading: lazy;
         }
 
-        .product-card:hover .product-image img {
+        .product-image img:active {
             transform: scale(1.05);
         }
 
         .product-category {
             position: absolute;
-            top: 15px;
-            left: 15px;
-            background: rgba(0,0,0,0.7);
+            top: 12px;
+            left: 12px;
+            background: rgba(0,0,0,0.75);
             color: white;
-            padding: 5px 12px;
+            padding: 6px 12px;
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 500;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 1;
         }
 
         .product-content {
-            padding: 25px;
+            padding: clamp(20px, 5vw, 28px);
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -314,41 +416,42 @@
         .product-header {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 15px;
+            margin-bottom: clamp(12px, 3vw, 20px);
         }
 
         .product-icon {
-            width: 50px;
-            height: 50px;
+            width: clamp(48px, 12vw, 56px);
+            height: clamp(48px, 12vw, 56px);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 15px;
+            margin-right: clamp(12px, 3vw, 20px);
             flex-shrink: 0;
         }
 
         .product-header h3 {
-            font-size: 1.4rem;
+            font-size: clamp(1.125rem, 3vw, 1.375rem);
             color: var(--primary-dark);
-            margin-bottom: 5px;
+            margin-bottom: 4px;
             line-height: 1.3;
         }
 
         .product-subtitle {
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 2.2vw, 0.95rem);
             color: #64748b;
-            margin-bottom: 15px;
+            margin-bottom: clamp(12px, 3vw, 20px);
+            line-height: 1.4;
         }
 
         .product-benefits {
             list-style-type: none;
-            margin-bottom: 20px;
+            margin-bottom: clamp(16px, 4vw, 24px);
             flex-grow: 1;
         }
 
         .product-benefits li {
-            padding: 8px 0;
+            padding: clamp(8px, 2vw, 10px) 0;
             border-bottom: 1px dashed #e2e8f0;
             display: flex;
             align-items: flex-start;
@@ -361,63 +464,109 @@
         .product-benefits i {
             color: var(--primary-green);
             margin-right: 10px;
-            margin-top: 3px;
-            font-size: 0.9rem;
+            margin-top: 2px;
+            font-size: clamp(0.85rem, 2.2vw, 0.95rem);
             flex-shrink: 0;
         }
 
+        .product-benefits span {
+            flex: 1;
+            font-size: clamp(0.9rem, 2.3vw, 1rem);
+            line-height: 1.4;
+        }
+
+        /* === 產品卡片底部區域 === */
         .product-footer {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            gap: clamp(12px, 3vw, 20px);
             margin-top: auto;
-            padding-top: 20px;
+            padding-top: clamp(16px, 4vw, 24px);
             border-top: 1px solid #e2e8f0;
+        }
+
+        /* 平板以上水平排列 */
+        @media (min-width: 480px) {
+            .product-footer {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
         }
 
         .product-roi {
             text-align: center;
         }
 
+        @media (min-width: 480px) {
+            .product-roi {
+                text-align: left;
+            }
+        }
+
         .roi-value {
-            font-size: 1.5rem;
+            font-size: clamp(1.25rem, 3vw, 1.5rem);
             font-weight: 800;
             color: var(--primary-green);
             display: block;
+            line-height: 1.2;
         }
 
         .roi-label {
-            font-size: 0.85rem;
+            font-size: clamp(0.8rem, 2.2vw, 0.85rem);
             color: #64748b;
         }
 
+        /* === 按鈕樣式 === */
         .btn-view {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
             color: white;
-            padding: 12px 25px;
+            padding: clamp(12px, 3vw, 16px) clamp(24px, 5vw, 32px);
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
             transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.2);
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.2);
             border: none;
             cursor: pointer;
-            font-size: 0.95rem;
+            font-size: clamp(0.9rem, 2.3vw, 1rem);
+            min-height: 48px;
+            min-width: 140px;
+            touch-action: manipulation;
+            will-change: transform, box-shadow;
+            width: 100%;
         }
 
-        .btn-view:hover {
+        @media (min-width: 480px) {
+            .btn-view {
+                width: auto;
+            }
+        }
+
+        .btn-view:active {
             background: linear-gradient(90deg, var(--secondary-green), #0d4010);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(46, 125, 50, 0.3);
+            transform: translateY(-2px) scale(0.98);
+            box-shadow: 0 6px 16px rgba(46, 125, 50, 0.3);
         }
 
-        /* 頁尾 */
+        @media (hover: hover) and (pointer: fine) {
+            .btn-view:hover {
+                background: linear-gradient(90deg, var(--secondary-green), #0d4010);
+                transform: translateY(-3px);
+                box-shadow: 0 8px 24px rgba(46, 125, 50, 0.3);
+            }
+        }
+
+        /* === 頁尾區域 === */
         footer {
             background: linear-gradient(135deg, var(--primary-dark) 0%, #1a202c 100%);
             color: rgba(255,255,255,0.85);
-            padding: 60px 0 30px;
+            padding: clamp(48px, 10vw, 80px) 0 clamp(32px, 8vw, 48px);
             position: relative;
+            padding-bottom: calc(clamp(32px, 8vw, 48px) + var(--safe-bottom));
         }
 
         footer::before {
@@ -426,47 +575,74 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 5px;
+            height: 4px;
             background: linear-gradient(90deg, var(--primary-green), var(--accent-gold));
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            grid-template-columns: 1fr;
+            gap: clamp(32px, 8vw, 48px);
+            margin-bottom: clamp(32px, 8vw, 48px);
+        }
+
+        /* 平板 (2列) */
+        @media (min-width: 640px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* 桌面 (多列) */
+        @media (min-width: 1024px) {
+            .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            }
+        }
+
+        .footer-section {
+            width: 100%;
         }
 
         .footer-logo {
             display: flex;
-            align-items: center;
-            justify-content: center;
             flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        @media (min-width: 640px) {
+            .footer-logo {
+                align-items: flex-start;
+                text-align: left;
+            }
         }
 
         .footer-logo-img {
-            width: 100px;
-            height: 100px;
+            width: clamp(80px, 20vw, 100px);
+            height: clamp(80px, 20vw, 100px);
             background: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 15px;
+            margin-bottom: clamp(12px, 3vw, 20px);
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
         }
 
         .footer-logo-img img {
             width: 100%;
             height: 100%;
             object-fit: contain;
+            padding: 12px;
         }
 
         .footer-section h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
+            font-size: clamp(1.125rem, 3vw, 1.375rem);
+            margin-bottom: clamp(16px, 4vw, 24px);
             color: white;
+            line-height: 1.2;
         }
 
         .footer-links {
@@ -474,7 +650,7 @@
         }
 
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: clamp(10px, 2.5vw, 14px);
         }
 
         .footer-links a {
@@ -483,110 +659,49 @@
             transition: color 0.3s;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            padding: 6px 0;
+            min-height: 36px;
+            font-size: clamp(0.9rem, 2.3vw, 1rem);
         }
 
-        .footer-links a:hover {
+        .footer-links a:active {
             color: var(--accent-gold);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .footer-links a:hover {
+                color: var(--accent-gold);
+            }
+        }
+
+        .footer-links i {
+            font-size: 0.9rem;
+            width: 16px;
         }
 
         .copyright {
             text-align: center;
-            padding-top: 30px;
+            padding-top: clamp(24px, 6vw, 32px);
             border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 2.2vw, 0.9rem);
             color: rgba(255,255,255,0.6);
+            line-height: 1.5;
         }
 
-        /* 響應式設計 */
-        @media (max-width: 1100px) {
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            }
+        .copyright p {
+            margin-bottom: clamp(8px, 2vw, 12px);
         }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 15px;
-            }
-            
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats-container {
-                gap: 15px;
-            }
-            
-            .stat-item {
-                min-width: 140px;
-                padding: 15px 20px;
-            }
-            
-            .stat-value {
-                font-size: 1.8rem;
-            }
-            
-            .product-footer {
-                flex-direction: column;
-                gap: 15px;
-                align-items: stretch;
-            }
-            
-            .product-roi {
-                text-align: center;
-            }
-            
-            .language-switcher {
-                flex-direction: column;
-                top: 10px;
-                right: 10px;
-                padding: 6px 8px;
-            }
-            
-            .lang-btn {
-                padding: 5px 10px;
-                font-size: 0.85rem;
-            }
+        .copyright p:last-child {
+            margin-bottom: 0;
         }
 
-        @media (max-width: 480px) {
-            header {
-                padding: 30px 0 60px;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            .company-name {
-                font-size: 1.5rem;
-            }
-            
-            .tagline {
-                font-size: 1rem;
-            }
-            
-            .product-image {
-                height: 180px;
-            }
-
-            .logo-icon {
-                width: 70px;
-                height: 70px;
-            }
-
-            .footer-logo-img {
-                width: 80px;
-                height: 80px;
-            }
-        }
-
-        /* 動畫效果 */
+        /* === 動畫效果 === */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -595,25 +710,105 @@
         }
 
         .fade-in {
+            opacity: 0;
             animation: fadeInUp 0.6s ease forwards;
+            will-change: opacity, transform;
+        }
+
+        /* === 滾動性能優化 === */
+        @media (prefers-reduced-motion: no-preference) {
+            html {
+                scroll-behavior: smooth;
+            }
+        }
+
+        /* === 輔助樣式 === */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* === 滾動條樣式 === */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-green);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-green);
+        }
+
+        /* === 減少動畫偏好 === */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            
+            .fade-in {
+                animation: none;
+                opacity: 1;
+            }
+        }
+
+        /* === iOS輸入優化 === */
+        input,
+        textarea,
+        button,
+        select,
+        a {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: 0;
+        }
+
+        /* === 載入優化 === */
+        .loading {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .loaded {
+            opacity: 1;
         }
     </style>
 </head>
 <body>
     <!-- 語言切換器 -->
-    <div class="language-switcher">
-        <button class="lang-btn active" data-lang="zh-TW" data-rate="1.000" data-currency="NTD">繁體中文(NTD)</button>
-        <button class="lang-btn" data-lang="zh-CN" data-rate="0.2192" data-currency="CNY">简体中文(CNY)</button>
-        <button class="lang-btn" data-lang="en" data-rate="0.0320" data-currency="USD">English(USD)</button>
+    <div class="language-switcher" role="region" aria-label="語言選擇">
+        <button class="lang-btn active" data-lang="zh-TW" data-rate="1.000" data-currency="NTD" aria-label="繁體中文">繁體中文(NTD)</button>
+        <button class="lang-btn" data-lang="zh-CN" data-rate="0.2192" data-currency="CNY" aria-label="简体中文">简体中文(CNY)</button>
+        <button class="lang-btn" data-lang="en" data-rate="0.0320" data-currency="USD" aria-label="English">English(USD)</button>
     </div>
 
     <!-- 頁頭區域 -->
-    <header>
+    <header role="banner">
         <div class="container">
             <div class="header-content">
                 <div class="logo-container">
-                    <div class="logo-icon">
-                        <img src="assets/logo.png" alt="活力旺logo" data-translate="alt" data-translate-key="logo_alt">
+                    <div class="logo-icon" aria-hidden="true">
+                        <img src="assets/logo.png" alt="活力旺logo" data-translate="alt" data-translate-key="logo_alt" loading="lazy">
                     </div>
                 </div>
                 <h1 data-translate>活力旺系列產品解決方案</h1>
@@ -643,23 +838,23 @@
     </header>
 
     <!-- 主內容區域 -->
-    <main class="container">
+    <main class="container" role="main">
         <!-- 產品方案區 -->
-        <section class="section-title">
-            <h2 data-translate>活力旺系列產品方案</h2>
+        <section class="section-title" aria-labelledby="products-title">
+            <h2 id="products-title" data-translate>活力旺系列產品方案</h2>
             <p data-translate>基於專利發酵平台與國際前沿代謝科學，針對不同畜禽品種的特定需求，提供精準營養解決方案</p>
         </section>
         
-        <section class="products-grid">
+        <section class="products-grid" role="list" aria-label="產品方案列表">
             <!-- 種公豬方案 -->
-            <div class="product-card fade-in">
+            <article class="product-card fade-in" role="listitem" tabindex="0" aria-label="種公豬精液品質提升方案">
                 <div class="product-image">
-                    <img src="assets/boar-semen-quality-improvement.jpg" alt="種公豬精液品質提升" data-translate="alt" data-translate-key="boar_image_alt">
+                    <img src="assets/boar-semen-quality-improvement.jpg" alt="種公豬精液品質提升" data-translate="alt" data-translate-key="boar_image_alt" loading="lazy">
                     <div class="product-category" data-translate>豬隻營養</div>
                 </div>
                 <div class="product-content">
                     <div class="product-header">
-                        <div class="product-icon" style="background: linear-gradient(135deg, #e63946, #f28b8b);">
+                        <div class="product-icon" style="background: linear-gradient(135deg, #e63946, #f28b8b);" aria-hidden="true">
                             <i class="fas fa-piggy-bank" style="color: white; font-size: 1.3rem;"></i>
                         </div>
                         <div>
@@ -667,7 +862,7 @@
                             <div class="product-subtitle" data-translate>約克夏/藍瑞斯/杜洛克等品種</div>
                         </div>
                     </div>
-                    <ul class="product-benefits">
+                    <ul class="product-benefits" role="list">
                         <li><i class="fas fa-check"></i> <span data-translate>精子畸形率降低7-10%</span></li>
                         <li><i class="fas fa-check"></i> <span data-translate>精液量提升15-20%</span></li>
                         <li><i class="fas fa-check"></i> <span data-translate>精子活力提升至85%以上</span></li>
@@ -681,17 +876,17 @@
                         <a href="活力旺種公豬精液品質提升方案.html" class="btn-view" data-translate>查看方案</a>
                     </div>
                 </div>
-            </div>
+            </article>
 
             <!-- 懷孕母豬方案 -->
-            <div class="product-card fade-in">
+            <article class="product-card fade-in" role="listitem" tabindex="0" aria-label="懷孕期母豬生產性能優化方案">
                 <div class="product-image">
-                    <img src="assets/pregnant-sow-production-optimization.jpg" alt="懷孕母豬生產性能優化" data-translate="alt" data-translate-key="pregnant_sow_image_alt">
+                    <img src="assets/pregnant-sow-production-optimization.jpg" alt="懷孕母豬生產性能優化" data-translate="alt" data-translate-key="pregnant_sow_image_alt" loading="lazy">
                     <div class="product-category" data-translate>豬隻營養</div>
                 </div>
                 <div class="product-content">
                     <div class="product-header">
-                        <div class="product-icon" style="background: linear-gradient(135deg, #8e24aa, #ce93d8);">
+                        <div class="product-icon" style="background: linear-gradient(135deg, #8e24aa, #ce93d8);" aria-hidden="true">
                             <i class="fas fa-female" style="color: white; font-size: 1.3rem;"></i>
                         </div>
                         <div>
@@ -699,7 +894,7 @@
                             <div class="product-subtitle" data-translate>提升產仔數與仔豬初生重</div>
                         </div>
                     </div>
-                    <ul class="product-benefits">
+                    <ul class="product-benefits" role="list">
                         <li><i class="fas fa-check"></i> <span data-translate>平均窩產仔數提升0.8-1.2頭</span></li>
                         <li><i class="fas fa-check"></i> <span data-translate>仔豬初生重增加100-150克</span></li>
                         <li><i class="fas fa-check"></i> <span data-translate>減少流產與死胎發生率</span></li>
@@ -713,17 +908,17 @@
                         <a href="活力旺懷孕期母豬生產性能優化方案.html" class="btn-view" data-translate>查看方案</a>
                     </div>
                 </div>
-            </div>
+            </article>
 
             <!-- 哺乳母豬方案 -->
-            <div class="product-card fade-in">
+            <article class="product-card fade-in" role="listitem" tabindex="0" aria-label="哺乳母豬性能提升方案">
                 <div class="product-image">
-                    <img src="assets/nursing-sow-performance-improvement.jpg" alt="哺乳母豬性能提升" data-translate="alt" data-translate-key="nursing_sow_image_alt">
+                    <img src="assets/nursing-sow-performance-improvement.jpg" alt="哺乳母豬性能提升" data-translate="alt" data-translate-key="nursing_sow_image_alt" loading="lazy">
                     <div class="product-category" data-translate>豬隻營養</div>
                 </div>
                 <div class="product-content">
                     <div class="product-header">
-                        <div class="product-icon" style="background: linear-gradient(135deg, #0288d1, #81d4fa);">
+                        <div class="product-icon" style="background: linear-gradient(135deg, #0288d1, #81d4fa);" aria-hidden="true">
                             <i class="fas fa-baby" style="color: white; font-size: 1.3rem;"></i>
                         </div>
                         <div>
@@ -731,7 +926,7 @@
                             <div class="product-subtitle" data-translate>提升泌乳量與仔豬斷奶重</div>
                         </div>
                     </div>
-                    <ul class="product-benefits">
+                    <ul class="product-benefits" role="list">
                         <li><i class="fas fa-check"></i> <span data-translate>泌乳量提升15-20%</span></li>
                         <li><i class="fas fa-check"></i> <span data-translate>仔豬21日齡斷奶重增加0.5-0.8kg</span></li>
                         <li><i class="fas fa-check"></i> <span data-translate>減少哺乳期體重損失</span></li>
@@ -745,17 +940,17 @@
                         <a href="活力旺哺乳母豬性能提升方案.html" class="btn-view" data-translate>查看方案</a>
                     </div>
                 </div>
-            </div>
+            </article>
 
             <!-- 仔豬人工乳方案 -->
-            <div class="product-card fade-in">
+            <article class="product-card fade-in" role="listitem" tabindex="0" aria-label="仔豬人工乳性能提升方案">
                 <div class="product-image">
-                    <img src="assets/piglet-milk-replacer-improvement.jpg" alt="仔豬人工乳性能提升" data-translate="alt" data-translate-key="piglet_milk_image_alt">
+                    <img src="assets/piglet-milk-replacer-improvement.jpg" alt="仔豬人工乳性能提升" data-translate="alt" data-translate-key="piglet_milk_image_alt" loading="lazy">
                     <div class="product-category" data-translate>豬隻營養</div>
                 </div>
                 <div class="product-content">
                     <div class="product-header">
-                        <div class="product-icon" style="background: linear-gradient(135deg, #f59e0b, #fcd34d);">
+                        <div class="product-icon" style="background: linear-gradient(135deg, #f59e0b, #fcd34d);" aria-hidden="true">
                             <i class="fas fa-wine-bottle" style="color: white; font-size: 1.3rem;"></i>
                         </div>
                         <div>
@@ -763,7 +958,7 @@
                             <div class="product-subtitle" data-translate>保育期仔豬專用配方</div>
                         </div>
                     </div>
-                    <ul class="product-benefits">
+                    <ul class="product-benefits" role="list">
                         <li><i class="fas fa-check"></i> <span data-translate>日增重提升50-70克/天</span></li>
                         <li><i class="fas fa-check"></i> <span data-translate>腹瀉率降低60-70%</span></li>
                         <li><i class="fas fa-check"></i> <span data-translate>飼料轉化率優化</span></li>
@@ -777,17 +972,17 @@
                         <a href="活力旺仔豬人工乳性能提升方案.html" class="btn-view" data-translate>查看方案</a>
                     </div>
                 </div>
-            </div>
+            </article>
 
             <!-- 種雞方案 -->
-            <div class="product-card fade-in">
+            <article class="product-card fade-in" role="listitem" tabindex="0" aria-label="種雞性能提升方案">
                 <div class="product-image">
-                    <img src="assets/breeding-chicken-performance-improvement.jpg" alt="種雞性能提升" data-translate="alt" data-translate-key="breeding_chicken_image_alt">
+                    <img src="assets/breeding-chicken-performance-improvement.jpg" alt="種雞性能提升" data-translate="alt" data-translate-key="breeding_chicken_image_alt" loading="lazy">
                     <div class="product-category" data-translate>家禽營養</div>
                 </div>
                 <div class="product-content">
                     <div class="product-header">
-                        <div class="product-icon" style="background: linear-gradient(135deg, #165DFF, #85a5ff);">
+                        <div class="product-icon" style="background: linear-gradient(135deg, #165DFF, #85a5ff);" aria-hidden="true">
                             <i class="fas fa-crow" style="color: white; font-size: 1.3rem;"></i>
                         </div>
                         <div>
@@ -795,7 +990,7 @@
                             <div class="product-subtitle" data-translate>種公雞×種母雞雙效優化</div>
                         </div>
                     </div>
-                    <ul class="product-benefits">
+                    <ul class="product-benefits" role="list">
                         <li><i class="fas fa-check"></i> <span data-translate>受精率提升至92-95%</span></li>
                         <li><i class="fas fa-check"></i> <span data-translate>孵化率提升4-5%</span></li>
                         <li><i class="fas fa-check"></i> <span data-translate>健雛率提升至94-97%</span></li>
@@ -809,17 +1004,17 @@
                         <a href="活力旺種雞性能提升方案.html" class="btn-view" data-translate>查看方案</a>
                     </div>
                 </div>
-            </div>
+            </article>
 
             <!-- 蛋雞方案 -->
-            <div class="product-card fade-in">
+            <article class="product-card fade-in" role="listitem" tabindex="0" aria-label="蛋雞性能提升方案">
                 <div class="product-image">
-                    <img src="assets/layer-chicken-performance-improvement.jpg" alt="蛋雞性能提升" data-translate="alt" data-translate-key="layer_chicken_image_alt">
+                    <img src="assets/layer-chicken-performance-improvement.jpg" alt="蛋雞性能提升" data-translate="alt" data-translate-key="layer_chicken_image_alt" loading="lazy">
                     <div class="product-category" data-translate>家禽營養</div>
                 </div>
                 <div class="product-content">
                     <div class="product-header">
-                        <div class="product-icon" style="background: linear-gradient(135deg, #e67e22, #f5b971);">
+                        <div class="product-icon" style="background: linear-gradient(135deg, #e67e22, #f5b971);" aria-hidden="true">
                             <i class="fas fa-egg" style="color: white; font-size: 1.3rem;"></i>
                         </div>
                         <div>
@@ -827,7 +1022,7 @@
                             <div class="product-subtitle" data-translate>海蘭、羅曼等蛋雞品種專用</div>
                         </div>
                     </div>
-                    <ul class="product-benefits">
+                    <ul class="product-benefits" role="list">
                         <li><i class="fas fa-check"></i> <span data-translate>產蛋率提升5-8%</span></li>
                         <li><i class="fas fa-check"></i> <span data-translate>蛋黃品質提升3-4級</span></li>
                         <li><i class="fas fa-check"></i> <span data-translate>暗斑蛋減少70-80%</span></li>
@@ -841,17 +1036,17 @@
                         <a href="活力旺蛋雞性能提升方案.html" class="btn-view" data-translate>查看方案</a>
                     </div>
                 </div>
-            </div>
+            </article>
 
             <!-- 土雞方案 -->
-            <div class="product-card fade-in">
+            <article class="product-card fade-in" role="listitem" tabindex="0" aria-label="土雞性能提升方案">
                 <div class="product-image">
-                    <img src="assets/native-chicken-performance-improvement.jpg" alt="土雞性能提升" data-translate="alt" data-translate-key="native_chicken_image_alt">
+                    <img src="assets/native-chicken-performance-improvement.jpg" alt="土雞性能提升" data-translate="alt" data-translate-key="native_chicken_image_alt" loading="lazy">
                     <div class="product-category" data-translate>家禽營養</div>
                 </div>
                 <div class="product-content">
                     <div class="product-header">
-                        <div class="product-icon" style="background: linear-gradient(135deg, #2a9d8f, #7fd1c7);">
+                        <div class="product-icon" style="background: linear-gradient(135deg, #2a9d8f, #7fd1c7);" aria-hidden="true">
                             <i class="fas fa-drumstick-bite" style="color: white; font-size: 1.3rem;"></i>
                         </div>
                         <div>
@@ -859,7 +1054,7 @@
                             <div class="product-subtitle" data-translate>紅羽/黑羽土雞專用</div>
                         </div>
                     </div>
-                    <ul class="product-benefits">
+                    <ul class="product-benefits" role="list">
                         <li><i class="fas fa-check"></i> <span data-translate>增重效率提升5-8%</span></li>
                         <li><i class="fas fa-check"></i> <span data-translate>料肉比優化3-5%</span></li>
                         <li><i class="fas fa-check"></i> <span data-translate>成活率提升2-3%</span></li>
@@ -873,17 +1068,17 @@
                         <a href="活力旺土雞性能提升方案.html" class="btn-view" data-translate>查看方案</a>
                     </div>
                 </div>
-            </div>
+            </article>
 
             <!-- 白肉雞方案 -->
-            <div class="product-card fade-in">
+            <article class="product-card fade-in" role="listitem" tabindex="0" aria-label="白肉雞FCR性能提升方案">
                 <div class="product-image">
-                    <img src="assets/broiler-chicken-fcr-improvement.jpg" alt="白肉雞FCR性能提升" data-translate="alt" data-translate-key="broiler_chicken_image_alt">
+                    <img src="assets/broiler-chicken-fcr-improvement.jpg" alt="白肉雞FCR性能提升" data-translate="alt" data-translate-key="broiler_chicken_image_alt" loading="lazy">
                     <div class="product-category" data-translate>家禽營養</div>
                 </div>
                 <div class="product-content">
                     <div class="product-header">
-                        <div class="product-icon" style="background: linear-gradient(135deg, #2563eb, #93c5fd);">
+                        <div class="product-icon" style="background: linear-gradient(135deg, #2563eb, #93c5fd);" aria-hidden="true">
                             <i class="fas fa-utensils" style="color: white; font-size: 1.3rem;"></i>
                         </div>
                         <div>
@@ -891,7 +1086,7 @@
                             <div class="product-subtitle" data-translate>AA/Ross/Cobb等白羽肉雞</div>
                         </div>
                     </div>
-                    <ul class="product-benefits">
+                    <ul class="product-benefits" role="list">
                         <li><i class="fas fa-check"></i> <span data-translate>FCR優化8-12%</span></li>
                         <li><i class="fas fa-check"></i> <span data-translate>42天體重提升15-20%</span></li>
                         <li><i class="fas fa-check"></i> <span data-translate>胸肉比例提升5-7%</span></li>
@@ -905,17 +1100,17 @@
                         <a href="活力旺白肉雞FCR性能提升方案.html" class="btn-view" data-translate>查看方案</a>
                     </div>
                 </div>
-            </div>
+            </article>
         </section>
     </main>
 
     <!-- 頁尾 -->
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section footer-logo">
                     <div class="footer-logo-img">
-                        <img src="assets/logo.png" alt="活力旺logo" data-translate="alt" data-translate-key="logo_alt">
+                        <img src="assets/logo.png" alt="活力旺logo" data-translate="alt" data-translate-key="logo_alt" loading="lazy">
                     </div>
                     <h3 data-translate>活力旺</h3>
                     <p style="opacity: 0.8; font-size: 0.9rem;" data-translate>精準營養解決方案</p>
@@ -929,7 +1124,7 @@
                 
                 <div class="footer-section">
                     <h3 data-translate>產品方案</h3>
-                    <ul class="footer-links">
+                    <ul class="footer-links" role="list">
                         <li><a href="活力旺種公豬精液品質提升方案.html"><i class="fas fa-chevron-right"></i> <span data-translate>種公豬精液品質提升</span></a></li>
                         <li><a href="活力旺懷孕期母豬生產性能優化方案.html"><i class="fas fa-chevron-right"></i> <span data-translate>懷孕母豬性能優化</span></a></li>
                         <li><a href="活力旺哺乳母豬性能提升方案.html"><i class="fas fa-chevron-right"></i> <span data-translate>哺乳母豬性能提升</span></a></li>
@@ -939,7 +1134,7 @@
                 
                 <div class="footer-section">
                     <h3 data-translate>家禽方案</h3>
-                    <ul class="footer-links">
+                    <ul class="footer-links" role="list">
                         <li><a href="活力旺種雞性能提升方案.html"><i class="fas fa-chevron-right"></i> <span data-translate>種雞性能提升</span></a></li>
                         <li><a href="活力旺蛋雞性能提升方案.html"><i class="fas fa-chevron-right"></i> <span data-translate>蛋雞性能提升</span></a></li>
                         <li><a href="活力旺土雞性能提升方案.html"><i class="fas fa-chevron-right"></i> <span data-translate>土雞性能提升</span></a></li>
@@ -949,10 +1144,10 @@
                 
                 <div class="footer-section">
                     <h3 data-translate>聯絡我們</h3>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-phone"></i> <span data-translate>技術專線:0913-866-080</span></a></li>
-                        <li><a href="#"><i class="fas fa-envelope"></i> in1000318@gmail.com</a></li>
-                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> <span data-translate>台灣省嘉義市自強街195巷33之28號</span></a></li>
+                    <ul class="footer-links" role="list">
+                        <li><a href="tel:+886913866080"><i class="fas fa-phone"></i> <span data-translate>技術專線:0913-866-080</span></a></li>
+                        <li><a href="mailto:in1000318@gmail.com"><i class="fas fa-envelope"></i> in1000318@gmail.com</a></li>
+                        <li><a href="https://maps.google.com/?q=台灣省嘉義市自強街195巷33之28號" target="_blank" rel="noopener"><i class="fas fa-map-marker-alt"></i> <span data-translate>台灣省嘉義市自強街195巷33之28號</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -965,7 +1160,125 @@
     </footer>
 
     <script>
-        // 多語言翻譯數據
+        // === 頁面加載優化 ===
+        document.addEventListener('DOMContentLoaded', function() {
+            // 優化圖片載入
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            images.forEach(img => {
+                if (img.complete) {
+                    img.classList.add('loaded');
+                } else {
+                    img.addEventListener('load', function() {
+                        this.classList.add('loaded');
+                    });
+                }
+            });
+
+            // === 滾動動畫效果 (優化版) ===
+            const fadeElements = document.querySelectorAll('.fade-in');
+            let ticking = false;
+            
+            const fadeInOnScroll = function() {
+                if (!ticking) {
+                    requestAnimationFrame(function() {
+                        fadeElements.forEach(element => {
+                            const elementTop = element.getBoundingClientRect().top;
+                            const elementVisible = 100;
+                            
+                            if (elementTop < window.innerHeight - elementVisible) {
+                                element.style.opacity = "1";
+                                element.style.transform = "translateY(0)";
+                            }
+                        });
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            };
+            
+            // 初始設置
+            fadeElements.forEach(element => {
+                element.style.opacity = "0";
+                element.style.transform = "translateY(20px)";
+                element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+            });
+            
+            // 使用被動監聽器提升滾動性能
+            window.addEventListener('scroll', fadeInOnScroll, { passive: true });
+            
+            // 初始觸發一次
+            fadeInOnScroll();
+            
+            // === 產品卡片點擊效果 (觸控優化) ===
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                let tapTimer;
+                
+                card.addEventListener('click', function(e) {
+                    clearTimeout(tapTimer);
+                    
+                    // 防誤觸檢查 (防止滾動時觸發)
+                    if (Math.abs(e.detail) > 1) return;
+                    
+                    // 如果不是點擊按鈕，則跳轉到詳情頁
+                    if (!e.target.closest('.btn-view')) {
+                        const link = this.querySelector('.btn-view');
+                        if (link) {
+                            tapTimer = setTimeout(() => {
+                                window.location.href = link.href;
+                            }, 100);
+                        }
+                    }
+                });
+                
+                // 觸控結束時清除定時器
+                card.addEventListener('touchend', function(e) {
+                    clearTimeout(tapTimer);
+                });
+            });
+            
+            // === 語言切換器功能 ===
+            const langButtons = document.querySelectorAll('.lang-btn');
+            langButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // 更新按鈕狀態
+                    langButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 獲取選中的語言和匯率
+                    const lang = this.getAttribute('data-lang');
+                    const rate = parseFloat(this.getAttribute('data-rate'));
+                    const currency = this.getAttribute('data-currency');
+                    
+                    // 更新頁面內容
+                    updatePageContent(lang, rate, currency);
+                    currentLang = lang;
+                });
+            });
+            
+            // 防止語言切換器滾動時誤觸
+            const langSwitcher = document.querySelector('.language-switcher');
+            langSwitcher.addEventListener('touchstart', function(e) {
+                e.stopPropagation();
+            });
+            
+            // === 觸控反饋優化 ===
+            const touchElements = document.querySelectorAll('.btn-view, .lang-btn, .product-card');
+            touchElements.forEach(el => {
+                el.addEventListener('touchstart', function() {
+                    this.style.transition = 'transform 0.1s ease';
+                });
+                
+                el.addEventListener('touchend', function() {
+                    this.style.transition = '';
+                });
+            });
+        });
+
+        // === 多語言系統 ===
         const translations = {
             'zh-TW': {
                 // 頁頭
@@ -1287,70 +1600,6 @@
         // 當前語言
         let currentLang = 'zh-TW';
 
-        // 滾動動畫效果
-        document.addEventListener('DOMContentLoaded', function() {
-            // 添加淡入動畫
-            const fadeElements = document.querySelectorAll('.fade-in');
-            
-            const fadeInOnScroll = function() {
-                fadeElements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const elementVisible = 150;
-                    
-                    if (elementTop < window.innerHeight - elementVisible) {
-                        element.style.opacity = "1";
-                        element.style.transform = "translateY(0)";
-                    }
-                });
-            };
-            
-            // 初始設置
-            fadeElements.forEach(element => {
-                element.style.opacity = "0";
-                element.style.transform = "translateY(30px)";
-                element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-            });
-            
-            // 監聽滾動事件
-            window.addEventListener('scroll', fadeInOnScroll);
-            
-            // 初始觸發一次
-            fadeInOnScroll();
-            
-            // 產品卡片點擊效果
-            const productCards = document.querySelectorAll('.product-card');
-            productCards.forEach(card => {
-                card.addEventListener('click', function(e) {
-                    // 如果不是點擊按鈕，則跳轉到詳情頁
-                    if (!e.target.closest('.btn-view')) {
-                        const link = this.querySelector('.btn-view');
-                        if (link) {
-                            window.location.href = link.href;
-                        }
-                    }
-                });
-            });
-            
-            // 語言切換器功能
-            const langButtons = document.querySelectorAll('.lang-btn');
-            langButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // 更新按鈕狀態
-                    langButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // 獲取選中的語言和匯率
-                    const lang = this.getAttribute('data-lang');
-                    const rate = parseFloat(this.getAttribute('data-rate'));
-                    const currency = this.getAttribute('data-currency');
-                    
-                    // 更新頁面內容
-                    updatePageContent(lang, rate, currency);
-                    currentLang = lang;
-                });
-            });
-        });
-
         // 更新頁面內容函數
         function updatePageContent(lang, rate, currency) {
             // 更新所有帶有data-translate屬性的元素
@@ -1361,19 +1610,16 @@
                     if (element.hasAttribute('data-translate') && element.getAttribute('data-translate') === 'alt') {
                         element.alt = translations[lang][key];
                     } else {
-                        element.innerHTML = translations[lang][key];
+                        element.textContent = translations[lang][key];
                     }
                 }
             });
             
             // 更新貨幣數值
             updateCurrencyValues(rate, currency);
-            
-            // 更新統計數值
-            updateStatValues(rate, currency);
         }
 
-        // 更新貨幣數值函數（修改版：USD使用無條件進位）
+        // 更新貨幣數值函數
         function updateCurrencyValues(rate, currency) {
             // 更新統計區域的貨幣數值
             const statValues = document.querySelectorAll('.stat-value[data-value]');
@@ -1382,21 +1628,17 @@
                 const unit = element.getAttribute('data-unit');
                 
                 if (element.textContent.includes('%')) {
-                    // ROI百分比保持不變
-                    return;
+                    return; // ROI百分比保持不變
                 }
                 
                 if (unit === 'per_ton') {
                     // 處理每噸成本
                     let convertedValue;
                     if (currency === 'USD') {
-                        // USD使用無條件進位到整數
                         convertedValue = Math.ceil(originalValue * rate);
                     } else if (currency === 'CNY') {
-                        // CNY四捨五入到整數
                         convertedValue = Math.round(originalValue * rate);
                     } else {
-                        // NTD保持原值
                         convertedValue = originalValue;
                     }
                     
@@ -1405,13 +1647,10 @@
                     // 普通貨幣數值
                     let convertedValue;
                     if (currency === 'USD') {
-                        // USD使用無條件進位到整數
                         convertedValue = Math.ceil(originalValue * rate);
                     } else if (currency === 'CNY') {
-                        // CNY四捨五入到整數
                         convertedValue = Math.round(originalValue * rate);
                     } else {
-                        // NTD保持原值
                         convertedValue = originalValue;
                     }
                     
@@ -1426,62 +1665,42 @@
                 let convertedValue;
                 
                 if (currency === 'USD') {
-                    // USD使用無條件進位到整數
                     convertedValue = Math.ceil(originalValue * rate);
                 } else if (currency === 'CNY') {
-                    // CNY四捨五入到整數
                     convertedValue = Math.round(originalValue * rate);
                 } else {
-                    // NTD保持原值
                     convertedValue = originalValue;
                 }
                 
                 // 找到對應的顯示元素並更新
                 const displayElement = element.previousElementSibling;
                 if (displayElement && displayElement.textContent.includes('NTD')) {
-                    if (currentLang === 'zh-CN') {
-                        displayElement.textContent = displayElement.textContent.replace('NTD', 'CNY');
-                    } else if (currentLang === 'en') {
-                        displayElement.textContent = displayElement.textContent.replace('NTD', 'USD');
-                    }
-                    displayElement.textContent = displayElement.textContent.replace(/NTD [\d,]+\.?\d*/g, `${currency} ${convertedValue.toLocaleString('en-US')}`);
+                    displayElement.textContent = displayElement.textContent
+                        .replace('NTD', currency)
+                        .replace(/[\d,]+\.?\d*/g, convertedValue.toLocaleString('en-US'));
                 }
             });
         }
 
-        // 更新統計數值函數（修改版：USD使用無條件進位）
-        function updateStatValues(rate, currency) {
-            // 處理統計數值
-            const statValues = document.querySelectorAll('.stat-value');
-            statValues.forEach(element => {
-                const text = element.textContent;
-                
-                // 跳過百分比數值
-                if (text.includes('%') || text.includes('天')) {
-                    return;
-                }
-                
-                // 處理貨幣數值
-                if (text.includes('NTD')) {
-                    const match = text.match(/NTD ([\d,]+)/);
-                    if (match) {
-                        const originalValue = parseFloat(match[1].replace(/,/g, ''));
-                        let convertedValue;
-                        
-                        if (currency === 'USD') {
-                            // USD使用無條件進位到整數
-                            convertedValue = Math.ceil(originalValue * rate);
-                        } else if (currency === 'CNY') {
-                            // CNY四捨五入到整數
-                            convertedValue = Math.round(originalValue * rate);
-                        } else {
-                            // NTD保持原值
-                            convertedValue = originalValue;
-                        }
-                        
-                        element.textContent = `${currency} ${convertedValue.toLocaleString('en-US')}`;
-                    }
-                }
+        // === 效能優化: 滾動監聽器節流 ===
+        let scrollTimeout;
+        window.addEventListener('scroll', function() {
+            if (!scrollTimeout) {
+                scrollTimeout = setTimeout(function() {
+                    scrollTimeout = null;
+                    // 滾動處理邏輯
+                }, 100);
+            }
+        }, { passive: true });
+
+        // === PWA 功能: 離線支援 ===
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                    console.log('ServiceWorker registration successful');
+                }, function(err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
             });
         }
     </script>
