@@ -1,4 +1,3 @@
-your-repository/
 ├── index.html                      (合併版多語言HTML檔案)
 └── assets/
     ├── modern-boar-farm-header.jpg
